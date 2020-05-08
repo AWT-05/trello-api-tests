@@ -4,8 +4,14 @@ language: java
 jdk:
   - openjdk11
 
+addons:
+  sonarcloud:
+    organization: awt-05
+    token: "${SONAR_TOKEN}"
+
 script:
   - ./gradlew check
+  - sonar-scanner
 
 notifications:
   email: true
