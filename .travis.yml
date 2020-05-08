@@ -1,0 +1,11 @@
+sudo: required
+
+language: java
+jdk:
+  - openjdk11
+
+script:
+  - ./gradlew check
+
+notifications:
+  email: true
