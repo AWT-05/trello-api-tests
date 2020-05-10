@@ -46,7 +46,7 @@ public class RequestSteps {
     /**
      * Sets base request specification without authentication.
      */
-    @When("I don't set authentication token")
+    @Given("I don't set authentication token")
     public void withoutAuthenticationToken() {
         requestManager.withoutAuthentication();
     }
