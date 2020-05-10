@@ -11,7 +11,7 @@ import java.util.Properties;
 /**
  * Reads environment properties.
  */
-public class Environment {
+public final class Environment {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
     private static final String FILTER_TAGS = "filterTags";
@@ -75,7 +75,7 @@ public class Environment {
      * @return environment base URI.
      */
     public String getBaseUri() {
-        String uri=BASE_URI.concat(VERSION);
+        String uri = BASE_URI.concat(VERSION);
         return getEnvProperty(uri);
     }
 
