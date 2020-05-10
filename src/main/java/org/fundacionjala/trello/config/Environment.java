@@ -29,12 +29,11 @@ public final class Environment {
      */
 
     private Environment() {
-        try {
-            FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH);
+        try (  FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)){
             properties = new Properties();
             properties.load(fileInputStream);
-            fileInputStream.close();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
