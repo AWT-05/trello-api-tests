@@ -33,6 +33,7 @@ public final class Environment {
             FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH);
             properties = new Properties();
             properties.load(fileInputStream);
+            fileInputStream.close();
         } catch (FileNotFoundException e) {
             String message = "Environment config file not found.";
             LOGGER.error(message);
