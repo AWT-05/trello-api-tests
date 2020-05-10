@@ -27,7 +27,6 @@ public final class Environment {
      * Configures the environment properties from gradle.properties.
      * Initializes instance of PropertiesUtils class.
      */
-
     private Environment() {
         try (FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)) {
             properties = new Properties();
@@ -36,12 +35,10 @@ public final class Environment {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
-            throw new RuntimeException(message, e);
         } catch (IOException e) {
             String message = "Input/Output exception, failed to load gradle.properties";
             LOGGER.error(message);
             LOGGER.info(message, e);
-            throw new RuntimeException(message, e);
         }
     }
 
