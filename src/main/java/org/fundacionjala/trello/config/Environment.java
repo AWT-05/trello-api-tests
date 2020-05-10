@@ -18,6 +18,8 @@ public class Environment {
     private static final String BASE_URI = "baseUri";
     private static final String API_KEY = "apiKey";
     private static final String API_TOKEN = "apiToken";
+    private static final String VERSION = "version";
+    private static final String THREAD_COUNT = "threadCount";
     private static final String PROPERTIES_FILE_PATH = "gradle.properties";
     private Properties properties;
 
@@ -73,24 +75,43 @@ public class Environment {
      * @return environment base URI.
      */
     public String getBaseUri() {
-        return getEnvProperty(BASE_URI);
+        String uri=BASE_URI.concat(VERSION);
+        return getEnvProperty(uri);
     }
 
     /**
-     * Gets environment base URI.
+     * Gets environment API Key.
      *
-     * @return environment base URI.
+     * @return environment API Key.
      */
     public String getApiKey() {
         return getEnvProperty(API_KEY);
     }
 
     /**
-     * Gets environment base URI.
+     * Gets environment API Token.
      *
-     * @return environment base URI.
+     * @return environment API Token.
      */
     public String getApiToken() {
         return getEnvProperty(API_TOKEN);
+    }
+
+    /**
+     * Gets environment Version.
+     *
+     * @return environment Version.
+     */
+    public String getVersion() {
+        return getEnvProperty(VERSION);
+    }
+
+    /**
+     * Gets environment Thread Count.
+     *
+     * @return environment API Token.
+     */
+    public String getThreadCount() {
+        return getEnvProperty(THREAD_COUNT);
     }
 }
