@@ -1,9 +1,11 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.config.IRequestManager;
+import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
 
@@ -12,6 +14,7 @@ import java.util.Map;
  */
 public class RequestSteps {
 
+    private Context context;
     private Response response;
 
     private final IRequestManager requestManager;
@@ -19,9 +22,11 @@ public class RequestSteps {
     /**
      * Initializes an instance of RequestSteps class.
      *
+     * @param context        scenario context.
      * @param requestManager helper to sending requests.
      */
-    public RequestSteps(final IRequestManager requestManager) {
+    public RequestSteps(final Context context, final IRequestManager requestManager) {
+        this.context = context;
         this.requestManager = requestManager;
     }
 
@@ -81,5 +86,15 @@ public class RequestSteps {
     @When("I send a PUT request to {string} with the following parameters")
     public void sendPUTRequestWithParameters(final String endpoint, final Map<String, String> params) {
         response = requestManager.params(params).put(endpoint);
+    }
+
+    /**
+     * aves response to context.
+     *
+     * @param responseKey key identifier.
+     */
+    @And("I save response as {string}")
+    public void iSaveResponseAs(String responseKey) {
+        context.saveResponse(responseKey, response);
     }
 }

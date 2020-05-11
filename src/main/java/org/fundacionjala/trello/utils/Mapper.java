@@ -77,6 +77,5 @@ public final class Mapper {
         Response response = responses.get(values[0]);
         String jsonPath = values[1];
         return response.jsonPath().getString(jsonPath);
-
     }
 }
