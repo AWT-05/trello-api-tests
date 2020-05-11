@@ -30,8 +30,8 @@ public class CommonHooks {
      */
     @Before(order = BUILD_REQ_SEC_ORDER_VALUE)
     public void buildDefaultReqSpec() {
-        RequestManagerRestAssured.displayFiltersData();
-        context.setReqSpec(RequestSpecUtil.buildWithAuth());
+        RequestManagerRestAssured.displayFiltersData(); // Only for help
+        context.setReqSpec(RequestSpecUtil.build());
     }
 
     /**

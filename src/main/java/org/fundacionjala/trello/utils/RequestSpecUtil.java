@@ -17,7 +17,7 @@ public final class RequestSpecUtil {
     }
 
     /**
-     * Builds base request specification for a username.
+     * Builds base request specification using API key and token
      *
      * @return base request specification.
      */
