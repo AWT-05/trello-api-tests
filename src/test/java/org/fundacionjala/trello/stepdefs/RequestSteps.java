@@ -2,6 +2,7 @@ package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.config.IRequestManager;
@@ -9,10 +10,15 @@ import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
 
+import static org.testng.Assert.assertEquals;
+
 /**
  * Groups request step definitions.
  */
 public class RequestSteps {
+
+    private static final String STATUS_CODE_ERROR_MESSAGE = "Expected status codeuser "
+            + "does not match actual status code.";
 
     private Context context;
     private Response response;
@@ -96,5 +102,15 @@ public class RequestSteps {
     @And("I save response as {string}")
     public void iSaveResponseAs(String responseKey) {
         context.saveResponse(responseKey, response);
+    }
+
+    /**
+     * Validates response status code.
+     *
+     * @param expectedStatusCode response status code.
+     */
+    @Then("I validate the response has status code {int}")
+    public void iValidateTheResponseHasStatusCode(final int expectedStatusCode) {
+        assertEquals(response.getStatusCode(), expectedStatusCode, STATUS_CODE_ERROR_MESSAGE);
     }
 }
