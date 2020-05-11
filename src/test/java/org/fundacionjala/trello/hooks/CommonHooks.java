@@ -2,6 +2,9 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.RequestSpecUtil;
 
@@ -29,6 +32,7 @@ public class CommonHooks {
      */
     @Before(order = BUILD_REQ_SEC_ORDER_VALUE)
     public void buildDefaultReqSpec() {
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
         context.setReqSpec(RequestSpecUtil.build());
     }
 
