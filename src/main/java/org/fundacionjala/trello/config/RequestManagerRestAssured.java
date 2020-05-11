@@ -1,5 +1,8 @@
 package org.fundacionjala.trello.config;
 
+import io.restassured.RestAssured;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.fundacionjala.trello.context.Context;
@@ -26,7 +29,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets authentication header to base request specification.
      */
     public void authenticate() {
-        managerReqSpec = RequestSpecUtil.build("Auth");
+        managerReqSpec = RequestSpecUtil.buildWithAuth();
         context.setReqSpec(managerReqSpec);
     }
 
@@ -109,6 +112,10 @@ public class RequestManagerRestAssured implements IRequestManager {
      */
     public Response put(final String endpoint) {
         return given(managerReqSpec).when().put(mapOut(endpoint));
+    }
+
+    public static void displayFiltersData() {
+        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     private String mapOut(final String endpoint) {

@@ -19,10 +19,9 @@ public final class RequestSpecUtil {
     /**
      * Builds base request specification for a username.
      *
-     * @param username account username.
      * @return base request specification.
      */
-    public static RequestSpecification build(final String username) {
+    public static RequestSpecification buildWithAuth() {
         String baseUri = Environment.getInstance().getBaseUri();
         String apiKey = Environment.getInstance().getApiKey();
         String apiToken = Environment.getInstance().getApiToken();
