@@ -88,7 +88,7 @@ public class Context {
      * Gets saved map by key.
      *
      * @param key map key.
-     * @return id      project id.
+     * @return id values.
      */
     public List<String> getIdsByKey(final String key) {
         return mapIds.getOrDefault(key, new ArrayList<>());

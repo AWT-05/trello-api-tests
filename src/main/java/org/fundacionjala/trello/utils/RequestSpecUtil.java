@@ -29,7 +29,7 @@ public final class RequestSpecUtil {
 
         return new RequestSpecBuilder().setBaseUri(baseUri)
                 .setContentType("application/json")
-                .addQueryParam("key",apiKey)
+                .addQueryParam("key", apiKey)
                 .addQueryParam("token", apiToken).build();
     }
 

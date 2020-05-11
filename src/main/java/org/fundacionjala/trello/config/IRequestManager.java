@@ -30,7 +30,7 @@ public interface IRequestManager {
      * @param params contains the parameter names and their values to send with the request.
      * @return RequestManager object.
      */
-    IRequestManager queryParams(final Map<String, String> params);
+    IRequestManager queryParams(Map<String, String> params);
 
     /**
      * Sets the body that'll be in the base request specification.
