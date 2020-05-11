@@ -8,15 +8,13 @@ public interface IRequestManager {
 
     /**
      * Sets authentication header to base request specification.
-     *
-     * @param username account username.
      */
-    void withAuthentication(String username);
+    void authenticate();
 
     /**
      * Sets request specification base without authentication.
      */
-    void withoutAuthentication();
+    void noAuthenticate();
 
     /**
      * Sets the parameters that'll be in the base request specification.
@@ -25,6 +23,14 @@ public interface IRequestManager {
      * @return RequestManager object.
      */
     IRequestManager params(Map<String, String> params);
+
+    /**
+     * Sets the query parameters that'll be in the base request specification.
+     *
+     * @param params contains the parameter names and their values to send with the request.
+     * @return RequestManager object.
+     */
+    IRequestManager queryParams(final Map<String, String> params);
 
     /**
      * Sets the body that'll be in the base request specification.

@@ -35,20 +35,18 @@ public class RequestSteps {
 
     /**
      * Sets authentication header to base request specification.
-     *
-     * @param username account username.
      */
-    @Given("I set authentication token using {string} account")
-    public void setAuthenticationToken(final String username) {
-        requestManager.withAuthentication(username);
+    @Given("I set authentication using API key and token")
+    public void setAuthenticationToken() {
+        requestManager.authenticate();
     }
 
     /**
      * Sets base request specification without authentication.
      */
-    @Given("I don't set authentication token")
+    @Given("I don't set authentication")
     public void withoutAuthenticationToken() {
-        requestManager.withoutAuthentication();
+        requestManager.noAuthenticate();
     }
 
     /**
