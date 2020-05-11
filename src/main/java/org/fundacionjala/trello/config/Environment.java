@@ -14,6 +14,7 @@ import java.util.Properties;
 public final class Environment {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
+    private static final String REQUEST_LIBRARY = "requestLibrary";
     private static final String FILTER_TAGS = "filterTags";
     private static final String BASE_URI = "baseUri";
     private static final String API_KEY = "apiKey";
@@ -67,6 +68,15 @@ public final class Environment {
             return properties.getProperty(env);
         }
         return property;
+    }
+
+    /**
+     * Gets request library name.
+     *
+     * @return filter requestLibrary property.
+     */
+    public String getRequestLibrary() {
+        return getEnvProperty(REQUEST_LIBRARY);
     }
 
     /**

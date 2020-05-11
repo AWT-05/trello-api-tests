@@ -8,14 +8,11 @@ public class CucumberFactory implements ObjectFactory {
     private final PicoFactory delegate = new PicoFactory();
 
     public CucumberFactory() {
-        System.setProperty("requestLibrary", "restassured");
-
-        if (System.getProperty("requestLibrary") != null) {
-            if ("restassured".equals(System.getProperty("requestLibrary").toLowerCase())) {
-                addClass(RequestManagerRestAssured.class);
-            } else {
-                throw new RuntimeException("requestLibrary is not defined");
-            }
+        String requestLibrary = Environment.getInstance().getRequestLibrary();
+        if ("restassured".equals(requestLibrary.toLowerCase())) {
+            addClass(RequestManagerRestAssured.class);
+        } else {
+            throw new RuntimeException("<".concat(requestLibrary).concat("> is not a defined value"));
         }
     }
 
@@ -50,7 +47,7 @@ public class CucumberFactory implements ObjectFactory {
      * Provides an instance of a glue class.
      *
      * @param glueClass type of instance to be created.
-     * @param <T> type of Glue class.
+     * @param <T>       type of Glue class.
      * @return new instance of type T.
      */
     @Override
