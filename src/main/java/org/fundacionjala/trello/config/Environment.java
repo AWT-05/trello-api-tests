@@ -21,6 +21,7 @@ public final class Environment {
     private static final String VERSION = "version";
     private static final String THREAD_COUNT = "threadCount";
     private static final String PROPERTIES_FILE_PATH = "gradle.properties";
+    private static Environment instance;
     private Properties properties;
 
     /**
@@ -40,6 +41,18 @@ public final class Environment {
             LOGGER.error(message);
             LOGGER.info(message, e);
         }
+    }
+
+    /**
+     * Gets singleton instance of the EnvironmentReader class.
+     *
+     * @return EnvironmentReader instance.
+     */
+    public static Environment getInstance() {
+        if (instance == null) {
+            instance = new Environment();
+        }
+        return instance;
     }
 
     /**
@@ -71,8 +84,9 @@ public final class Environment {
      * @return environment base URI.
      */
     public String getBaseUri() {
-        String uri = BASE_URI.concat(VERSION);
-        return getEnvProperty(uri);
+        String baseUri = getEnvProperty(BASE_URI);
+        String version = getEnvProperty(VERSION);
+        return baseUri.concat(version);
     }
 
     /**
