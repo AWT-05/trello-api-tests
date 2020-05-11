@@ -1,6 +1,8 @@
 package org.fundacionjala.trello.utils;
 
+import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
+import org.fundacionjala.trello.config.Environment;
 
 /**
  * Groups utility methods to build request spec base object.
@@ -21,8 +23,14 @@ public final class RequestSpecUtil {
      * @return base request specification.
      */
     public static RequestSpecification build(final String username) {
-        // To do.
-        return null;
+        String baseUri = Environment.getInstance().getBaseUri();
+        String apiKey = Environment.getInstance().getApiKey();
+        String apiToken = Environment.getInstance().getApiToken();
+
+        return new RequestSpecBuilder().setBaseUri(baseUri)
+                .setContentType("application/json")
+                .addQueryParam("key",apiKey)
+                .addQueryParam("token", apiToken).build();
     }
 
     /**
@@ -31,7 +39,7 @@ public final class RequestSpecUtil {
      * @return base request specification.
      */
     public static RequestSpecification build() {
-        // To do.
-        return null;
+        String baseUri = Environment.getInstance().getBaseUri();
+        return new RequestSpecBuilder().setBaseUri(baseUri).build();
     }
 }
