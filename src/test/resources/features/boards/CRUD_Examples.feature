@@ -14,9 +14,10 @@ Feature: Board Controller
 
   Scenario: Update board created
     When I send a PUT request to "/boards/{board.id}" with the following parameters
-      | displayName | Name Updated |
-      | desc        | Only MOI     |
+      | name | Name Updated        |
+      | desc | Description Updated |
     Then I validate the response has status code 200
+    And I validate the response body should match with "boards/getBoardSchema.json" JSON schema
 
 
   Scenario: Delete board created

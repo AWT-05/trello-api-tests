@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.config.IRequestManager;
 import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.utils.Mapper;
 
 import java.util.Map;
 
@@ -19,6 +20,7 @@ public class RequestSteps {
 
     private static final String STATUS_CODE_ERROR_MESSAGE = "Expected status codeuser "
             + "does not match actual status code.";
+    private static final String DATA_MATCH_ERROR_MSG = "The '%s' field does not match with expected value.";
 
     private Context context;
     private Response response;
@@ -100,7 +102,7 @@ public class RequestSteps {
      * @param responseKey key identifier.
      */
     @And("I save response as {string}")
-    public void iSaveResponseAs(String responseKey) {
+    public void iSaveResponseAs(final String responseKey) {
         context.saveResponse(responseKey, response);
     }
 
@@ -112,5 +114,29 @@ public class RequestSteps {
     @Then("I validate the response has status code {int}")
     public void iValidateTheResponseHasStatusCode(final int expectedStatusCode) {
         assertEquals(response.getStatusCode(), expectedStatusCode, STATUS_CODE_ERROR_MESSAGE);
+    }
+
+    /**
+     * Validates response body json schema.
+     *
+     * @param schemaPath json schema path.
+     */
+    @And("I validate the response body should match with {string} JSON schema")
+    public void iValidateTheResponseBodyShouldMatchWithJSONSchema(final String schemaPath) {
+        requestManager.verifyJsonSchema(response, schemaPath);
+    }
+
+    /**
+     * Validates that response contains expected data.
+     *
+     * @param data expected data.
+     */
+    @And("I validate the response contains the following data")
+    public void iValidateTheResponseContainsTheFollowingData(final Map<String, String> data) {
+        Map<String, String> expectedData = Mapper.replaceData(data, context.getResponses());
+        for (String key : data.keySet()) {
+            assertEquals(response.jsonPath().getString(key), expectedData.get(key),
+                    String.format(DATA_MATCH_ERROR_MSG, key));
+        }
     }
 }

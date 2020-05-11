@@ -9,9 +9,11 @@ import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.Mapper;
 import org.fundacionjala.trello.utils.RequestSpecUtil;
 
+import java.io.File;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 
 /**
  * Gives options available to sending a request.
@@ -20,6 +22,7 @@ public class RequestManagerRestAssured implements IRequestManager {
 
     private final Context context;
     private RequestSpecification managerReqSpec;
+    private static final String SCHEMAS_BASE_FOLDER = "src/test/resources/schemas/";
 
     public RequestManagerRestAssured(final Context context) {
         this.context = context;
@@ -112,6 +115,17 @@ public class RequestManagerRestAssured implements IRequestManager {
      */
     public Response put(final String endpoint) {
         return given(managerReqSpec).when().put(mapOut(endpoint));
+    }
+
+    /**
+     * Verify the responses of json schema.
+     *
+     * @param response   response.
+     * @param schemaPath json schema path.
+     */
+    public void verifyJsonSchema(final Response response, final String schemaPath) {
+        File schemaFile = new File(SCHEMAS_BASE_FOLDER.concat(schemaPath));
+        response.then().assertThat().body(matchesJsonSchema(schemaFile));
     }
 
     public static void displayFiltersData() {
