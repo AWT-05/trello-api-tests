@@ -45,9 +45,9 @@ public final class Environment {
     }
 
     /**
-     * Gets singleton instance of the EnvironmentReader class.
+     * Gets singleton instance of the Environment class.
      *
-     * @return EnvironmentReader instance.
+     * @return Environment instance.
      */
     public static Environment getInstance() {
         if (instance == null) {

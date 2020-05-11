@@ -20,7 +20,7 @@ public interface IRequestManager {
      * Sets the parameters that'll be in the base request specification.
      *
      * @param params contains the parameter names and their values to send with the request.
-     * @return RequestManager object.
+     * @return the request manager object.
      */
     IRequestManager params(Map<String, String> params);
 
@@ -28,7 +28,7 @@ public interface IRequestManager {
      * Sets the query parameters that'll be in the base request specification.
      *
      * @param params contains the parameter names and their values to send with the request.
-     * @return RequestManager object.
+     * @return the request manager object.
      */
     IRequestManager queryParams(Map<String, String> params);
 
@@ -36,7 +36,7 @@ public interface IRequestManager {
      * Sets the body that'll be in the base request specification.
      *
      * @param jsonData contains the string body to send.
-     * @return RequestManager object.
+     * @return the request manager object.
      */
     IRequestManager body(String jsonData);
 

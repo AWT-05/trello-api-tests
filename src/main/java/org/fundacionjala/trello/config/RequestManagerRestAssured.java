@@ -45,7 +45,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets the parameters that'll be in the base request specification.
      *
      * @param params contains the parameter names and their values to send with the request.
-     * @return RequestManager object.
+     * @return the request manager object
      */
     public RequestManagerRestAssured params(final Map<String, String> params) {
         managerReqSpec = given(context.getReqSpec()).params(mapOut(params));
@@ -56,7 +56,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets the query parameters that'll be in the base request specification.
      *
      * @param params contains the parameter names and their values to send with the request.
-     * @return RequestManager object.
+     * @return the request manager object.
      */
     public RequestManagerRestAssured queryParams(final Map<String, String> params) {
         managerReqSpec = given(context.getReqSpec()).queryParams(mapOut(params));
@@ -67,7 +67,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets the body that'll be in the base request specification.
      *
      * @param jsonData contains the string body to send.
-     * @return RequestManager object.
+     * @return the request manager object.
      */
     public RequestManagerRestAssured body(final String jsonData) {
         managerReqSpec = given(context.getReqSpec()).body(jsonData);
