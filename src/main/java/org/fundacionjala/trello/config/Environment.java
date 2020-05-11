@@ -14,6 +14,7 @@ import java.util.Properties;
 public final class Environment {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
+    private static final String REQUEST_LIBRARY = "requestLibrary";
     private static final String FILTER_TAGS = "filterTags";
     private static final String BASE_URI = "baseUri";
     private static final String API_KEY = "apiKey";
@@ -21,6 +22,7 @@ public final class Environment {
     private static final String VERSION = "version";
     private static final String THREAD_COUNT = "threadCount";
     private static final String PROPERTIES_FILE_PATH = "gradle.properties";
+    private static Environment instance;
     private Properties properties;
 
     /**
@@ -43,6 +45,18 @@ public final class Environment {
     }
 
     /**
+     * Gets singleton instance of the Environment class.
+     *
+     * @return Environment instance.
+     */
+    public static Environment getInstance() {
+        if (instance == null) {
+            instance = new Environment();
+        }
+        return instance;
+    }
+
+    /**
      * Gets string containing a specific environment property.
      *
      * @param env is the property name string.
@@ -54,6 +68,15 @@ public final class Environment {
             return properties.getProperty(env);
         }
         return property;
+    }
+
+    /**
+     * Gets request library name.
+     *
+     * @return filter requestLibrary property.
+     */
+    public String getRequestLibrary() {
+        return getEnvProperty(REQUEST_LIBRARY);
     }
 
     /**
@@ -71,8 +94,9 @@ public final class Environment {
      * @return environment base URI.
      */
     public String getBaseUri() {
-        String uri = BASE_URI.concat(VERSION);
-        return getEnvProperty(uri);
+        String baseUri = getEnvProperty(BASE_URI);
+        String version = getEnvProperty(VERSION);
+        return baseUri.concat(version);
     }
 
     /**
