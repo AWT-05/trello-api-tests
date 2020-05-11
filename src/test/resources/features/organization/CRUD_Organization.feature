@@ -11,3 +11,12 @@ Feature: Organization Controller
   Scenario: Get an organization
     When I send a GET request to "/organizations/5eb8955b28e74230cc87d14f"
 
+
+  Scenario: Update an organization
+    When I send a PUT request to "/organizations/5eb8955b28e74230cc87d14f" with the following parameters
+      | displayName | Name Updated |
+      | desc        | Only MOI     |
+
+
+  Scenario: Delete an organization
+    When I send a DELETE request to "/organizations/5eb8955b28e74230cc87d14f"
