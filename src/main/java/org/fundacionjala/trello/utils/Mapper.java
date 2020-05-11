@@ -26,7 +26,7 @@ public final class Mapper {
      */
     public static String replaceData(final String content, final Map<String, Response> responses) {
         // To do.
-        return null;
+        return content;
     }
 
     /**
@@ -39,6 +39,6 @@ public final class Mapper {
     public static Map<String, String> replaceData(final Map<String, String> content,
                                                   final Map<String, Response> responses) {
         // To do.
-        return null;
+        return content;
     }
 }
