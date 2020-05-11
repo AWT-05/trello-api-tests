@@ -17,6 +17,13 @@ public interface IRequestManager {
     void noAuthenticate();
 
     /**
+     * Initialize the request specification, cleaning any parameters.
+     *
+     * @return the request manager object.
+     */
+    RequestManagerRestAssured fresh();
+
+    /**
      * Sets the parameters that'll be in the base request specification.
      *
      * @param params contains the parameter names and their values to send with the request.

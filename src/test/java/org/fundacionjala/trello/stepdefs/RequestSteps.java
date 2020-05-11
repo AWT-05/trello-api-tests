@@ -69,7 +69,7 @@ public class RequestSteps {
      */
     @When("I send a POST request to {string} with the following parameters")
     public void sendPOSTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.params(params).post(endpoint);
+        response = requestManager.fresh().params(params).post(endpoint);
     }
 
     /**
@@ -80,6 +80,6 @@ public class RequestSteps {
      */
     @When("I send a PUT request to {string} with the following parameters")
     public void sendPUTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.params(params).put(endpoint);
+        response = requestManager.fresh().params(params).put(endpoint);
     }
 }
