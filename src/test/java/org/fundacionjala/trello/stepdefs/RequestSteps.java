@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.config.IRequestManager;
-import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
 
@@ -13,23 +12,16 @@ import java.util.Map;
  */
 public class RequestSteps {
 
-    private static final String SCHEMAS_BASE_FOLDER = "src/test/resources/schemas/";
-    private static final String STATUS_CODE_ERROR_MESSAGE = "Expected status codeuser "
-            + "does not match actual status code.";
-    private static final String DATA_MATCH_ERROR_MSG = "The '%s' field does not match with expected value.";
-
-    private final Context context;
     private Response response;
+
     private final IRequestManager requestManager;
 
     /**
      * Initializes an instance of RequestSteps class.
      *
-     * @param context        scenario context.
      * @param requestManager helper to sending requests.
      */
-    public RequestSteps(final Context context, final IRequestManager requestManager) {
-        this.context = context;
+    public RequestSteps(final IRequestManager requestManager) {
         this.requestManager = requestManager;
     }
 
