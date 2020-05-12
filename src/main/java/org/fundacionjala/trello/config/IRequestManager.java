@@ -1,20 +1,19 @@
 package org.fundacionjala.trello.config;
 
 import io.restassured.response.Response;
+import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
 
 public interface IRequestManager {
 
     /**
-     * Sets authentication header to base request specification.
+     * Initialize the request specification, cleaning any parameters.
+     *
+     * @param context when save the request specification.
+     * @return the request manager object.
      */
-    void authenticate();
-
-    /**
-     * Sets request specification base without authentication.
-     */
-    void noAuthenticate();
+    IRequestManager init(Context context);
 
     /**
      * Sets the parameters that'll be in the base request specification.

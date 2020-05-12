@@ -3,7 +3,10 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import org.fundacionjala.trello.config.IRequestManager;
+import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.utils.RequestSpecUtils;
 
 import java.util.Map;
 
@@ -12,6 +15,7 @@ import java.util.Map;
  */
 public class RequestSteps {
 
+    private final Context context;
     private Response response;
 
     private final IRequestManager requestManager;
@@ -19,9 +23,11 @@ public class RequestSteps {
     /**
      * Initializes an instance of RequestSteps class.
      *
+     * @param context        scenario context.
      * @param requestManager helper to sending requests.
      */
-    public RequestSteps(final IRequestManager requestManager) {
+    public RequestSteps(final Context context, final IRequestManager requestManager) {
+        this.context = context;
         this.requestManager = requestManager;
     }
 
@@ -30,7 +36,8 @@ public class RequestSteps {
      */
     @Given("I set authentication using API key and token")
     public void setAuthenticationToken() {
-        requestManager.authenticate();
+        RequestSpecification reqSpec = RequestSpecUtils.buildWithAuth();
+        context.setReqSpec(reqSpec);
     }
 
     /**
@@ -38,7 +45,8 @@ public class RequestSteps {
      */
     @Given("I don't set authentication")
     public void withoutAuthenticationToken() {
-        requestManager.noAuthenticate();
+        RequestSpecification reqSpec = RequestSpecUtils.build();
+        context.setReqSpec(reqSpec);
     }
 
     /**
@@ -48,7 +56,7 @@ public class RequestSteps {
      */
     @When("I send a GET request to {string}")
     public void sendGETRequestWithParameters(final String endpoint) {
-        response = requestManager.get(endpoint);
+        response = requestManager.init(context).get(endpoint);
     }
 
     /**
@@ -58,7 +66,7 @@ public class RequestSteps {
      */
     @When("I send a DELETE request to {string}")
     public void sendDELETERequestWithParameters(final String endpoint) {
-        response = requestManager.delete(endpoint);
+        response = requestManager.init(context).delete(endpoint);
     }
 
     /**
@@ -69,7 +77,7 @@ public class RequestSteps {
      */
     @When("I send a POST request to {string} with the following parameters")
     public void sendPOSTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.params(params).post(endpoint);
+        response = requestManager.init(context).queryParams(params).post(endpoint);
     }
 
     /**
@@ -80,6 +88,6 @@ public class RequestSteps {
      */
     @When("I send a PUT request to {string} with the following parameters")
     public void sendPUTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.params(params).put(endpoint);
+        response = requestManager.init(context).queryParams(params).put(endpoint);
     }
 }
