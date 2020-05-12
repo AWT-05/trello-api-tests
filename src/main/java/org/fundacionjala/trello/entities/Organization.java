@@ -36,9 +36,9 @@ public class Organization {
      * @param displayName value name of the organization.
      */
     public void createNew(final String key, final String displayName) {
-        Map<String, String> orgParams = new HashMap<>() {{
-            put("displayName", displayName);
-        }};
+        Map<String, String> orgParams = new HashMap<>();
+        orgParams.put("displayName", displayName);
+
 
         response = requestManager.init(context).queryParams(orgParams).post(endpoint);
         context.saveResponse(key, response);
