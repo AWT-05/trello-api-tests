@@ -9,11 +9,10 @@ import java.util.Map;
 
 public class Organization {
 
-    private final String endpoint = "/organizations";
+    private final static String endpoint = "/organizations";
 
     private Context context;
     private IRequestManager requestManager;
-    private Response response;
 
     public Organization(final Context context, final IRequestManager requestManager) {
         this.context = context;
@@ -40,7 +39,7 @@ public class Organization {
         orgParams.put("displayName", displayName);
 
 
-        response = requestManager.init(context).queryParams(orgParams).post(endpoint);
+        Response response = requestManager.init(context).queryParams(orgParams).post(endpoint);
         context.saveResponse(key, response);
     }
 }
