@@ -1,7 +1,7 @@
 package org.fundacionjala.trello.stepdefs;
 
 import io.cucumber.java.en.When;
-import org.fundacionjala.trello.client.Organization;
+import org.fundacionjala.trello.entities.Organization;
 import org.fundacionjala.trello.context.Context;
 
 public class BackgroundStepDefs {

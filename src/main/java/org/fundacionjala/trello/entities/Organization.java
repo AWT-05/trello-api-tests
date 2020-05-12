@@ -1,7 +1,7 @@
-package org.fundacionjala.trello.client;
+package org.fundacionjala.trello.entities;
 
 import io.restassured.response.Response;
-import org.fundacionjala.trello.config.IRequestManager;
+import org.fundacionjala.trello.client.IRequestManager;
 import org.fundacionjala.trello.context.Context;
 
 import java.util.HashMap;
