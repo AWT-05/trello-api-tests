@@ -20,7 +20,6 @@ public class RequestManagerRestAssured implements IRequestManager {
 
     private final Context context;
     private RequestSpecification managerReqSpec;
-    private static final String SCHEMAS_BASE_FOLDER = "src/test/resources/schemas/";
 
     public RequestManagerRestAssured(final Context context) {
         this.context = context;
