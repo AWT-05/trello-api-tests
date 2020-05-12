@@ -21,7 +21,7 @@ public interface IRequestManager {
      *
      * @return the request manager object.
      */
-    RequestManagerRestAssured fresh();
+    //RequestManagerRestAssured fresh();
 
     /**
      * Sets the parameters that'll be in the base request specification.

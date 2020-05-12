@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.Mapper;
-import org.fundacionjala.trello.utils.RequestSpecUtil;
+import org.fundacionjala.trello.utils.RequestSpecUtils;
 
 import java.util.Map;
 
@@ -29,7 +29,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets authentication header to base request specification.
      */
     public void authenticate() {
-        reqSpecManager = RequestSpecUtil.buildWithAuth();
+        reqSpecManager = RequestSpecUtils.buildWithAuth();
         context.setReqSpec(reqSpecManager);
     }
 
@@ -37,18 +37,8 @@ public class RequestManagerRestAssured implements IRequestManager {
      * Sets request specification base without authentication.
      */
     public void noAuthenticate() {
-        reqSpecManager = RequestSpecUtil.build();
+        reqSpecManager = RequestSpecUtils.build();
         context.setReqSpec(reqSpecManager);
-    }
-
-    /**
-     * Initialize the request specification, cleaning any parameters.
-     *
-     * @return the request manager object.
-     */
-    public RequestManagerRestAssured fresh() {
-        reqSpecManager = context.getReqSpec();
-        return this;
     }
 
     /**

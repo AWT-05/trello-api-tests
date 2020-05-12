@@ -4,7 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.fundacionjala.trello.config.RequestManagerRestAssured;
 import org.fundacionjala.trello.context.Context;
-import org.fundacionjala.trello.utils.RequestSpecUtil;
+import org.fundacionjala.trello.utils.RequestSpecUtils;
 
 /**
  * Groups common preconditions and post conditions methods.
@@ -31,7 +31,7 @@ public class CommonHooks {
     @Before(order = BUILD_REQ_SEC_ORDER_VALUE)
     public void buildDefaultReqSpec() {
         RequestManagerRestAssured.displayFiltersData(); // Only for help
-        context.setReqSpec(RequestSpecUtil.build());
+        context.setReqSpec(RequestSpecUtils.build());
     }
 
     /**
