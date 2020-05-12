@@ -1,27 +1,17 @@
 package org.fundacionjala.trello.config;
 
-import io.restassured.response.Response;
+import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
 
 public interface IRequestManager {
 
     /**
-     * Sets authentication header to base request specification.
-     */
-    void authenticate();
-
-    /**
-     * Sets request specification base without authentication.
-     */
-    void noAuthenticate();
-
-    /**
      * Initialize the request specification, cleaning any parameters.
      *
      * @return the request manager object.
      */
-    //RequestManagerRestAssured fresh();
+    IRequestManager init(Context context);
 
     /**
      * Sets the parameters that'll be in the base request specification.
@@ -53,7 +43,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Response get(String endpoint);
+    Context get(String endpoint);
 
     /**
      * Sends a DELETE request to an <code>endpoint</code>.
@@ -61,7 +51,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Response delete(String endpoint);
+    Context delete(String endpoint);
 
     /**
      * Sends a POST request to an <code>endpoint</code>.
@@ -69,7 +59,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Response post(String endpoint);
+    Context post(String endpoint);
 
     /**
      * Sends a PUT request to an <code>endpoint</code>.
@@ -77,5 +67,5 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Response put(String endpoint);
+    Context put(String endpoint);
 }

@@ -18,27 +18,18 @@ import static io.restassured.RestAssured.given;
  */
 public class RequestManagerRestAssured implements IRequestManager {
 
-    private final Context context;
-    private RequestSpecification reqSpecManager;
+    private RequestSpecification reqSpec;
+    private Context context;
+    private Response response;
 
-    public RequestManagerRestAssured(final Context context) {
+    public RequestManagerRestAssured() {
+        reqSpec = RequestSpecUtils.build();
+    }
+
+    public RequestManagerRestAssured init(Context context) {
         this.context = context;
-    }
-
-    /**
-     * Sets authentication header to base request specification.
-     */
-    public void authenticate() {
-        reqSpecManager = RequestSpecUtils.buildWithAuth();
-        context.setReqSpec(reqSpecManager);
-    }
-
-    /**
-     * Sets request specification base without authentication.
-     */
-    public void noAuthenticate() {
-        reqSpecManager = RequestSpecUtils.build();
-        context.setReqSpec(reqSpecManager);
+        this.reqSpec = context.getReqSpec();
+        return this;
     }
 
     /**
@@ -48,7 +39,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @return the request manager object.
      */
     public RequestManagerRestAssured params(final Map<String, String> params) {
-        reqSpecManager = given(reqSpecManager).params(mapOut(params));
+        reqSpec = given(reqSpec).params(mapOut(params));
         return this;
     }
 
@@ -59,7 +50,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @return the request manager object.
      */
     public RequestManagerRestAssured queryParams(final Map<String, String> params) {
-        reqSpecManager = given(reqSpecManager).queryParams(mapOut(params));
+        reqSpec = given(reqSpec).queryParams(mapOut(params));
         return this;
     }
 
@@ -70,7 +61,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @return the request manager object.
      */
     public RequestManagerRestAssured body(final String jsonData) {
-        reqSpecManager = given(reqSpecManager).body(jsonData);
+        reqSpec = given(reqSpec).body(jsonData);
         return this;
     }
 
@@ -80,8 +71,10 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response get(final String endpoint) {
-        return given(reqSpecManager).when().get(mapOut(endpoint));
+    public Context get(final String endpoint) {
+        response = given(reqSpec).when().get(mapOut(endpoint));
+        context.saveResponse(context.PUBLIC_KEY, response);
+        return context;
     }
 
     /**
@@ -90,8 +83,10 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response delete(final String endpoint) {
-        return given(reqSpecManager).when().delete(mapOut(endpoint));
+    public Context delete(final String endpoint) {
+        response = given(reqSpec).when().delete(mapOut(endpoint));
+        context.saveResponse(context.PUBLIC_KEY, response);
+        return context;
     }
 
     /**
@@ -100,8 +95,10 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response post(final String endpoint) {
-        return given(reqSpecManager).when().post(mapOut(endpoint));
+    public Context post(final String endpoint) {
+        response = given(reqSpec).when().post(mapOut(endpoint));
+        context.saveResponse(context.PUBLIC_KEY, response);
+        return context;
     }
 
     /**
@@ -110,8 +107,10 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Response put(final String endpoint) {
-        return given(reqSpecManager).when().put(mapOut(endpoint));
+    public Context put(final String endpoint) {
+        response = given(reqSpec).when().put(mapOut(endpoint));
+        context.saveResponse(context.PUBLIC_KEY, response);
+        return context;
     }
 
     public static void displayFiltersData() {

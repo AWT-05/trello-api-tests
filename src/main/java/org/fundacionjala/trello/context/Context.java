@@ -17,6 +17,8 @@ public class Context {
     private Map<String, Response> responses;
     private Map<String, List<String>> mapIds;
 
+    public String PUBLIC_KEY = "public";
+
     /**
      * Initializes an instance of Context class.
      */
@@ -61,6 +63,14 @@ public class Context {
         responses.put(key, response);
     }
 
+    /**
+     * Gets response saved with a public key.
+     *
+     * @return default response.
+     */
+    public Response response() {
+        return responses.get(PUBLIC_KEY);
+    }
 
     /**
      * Gets context responses.
