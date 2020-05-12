@@ -18,13 +18,13 @@ public class OrganizationHooks {
      * @param context        scenario context object.
      * @param requestManager to send request.
      */
-    public OrganizationHooks(Context context, IRequestManager requestManager) {
+    public OrganizationHooks(final Context context, final IRequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }
 
     /**
-     * Delete organizations
+     * Delete organizations.
      */
     @After(value = "@deleteOrganization", order = CLEAN_CONTEXT_ORDER_VALUE)
     public void cleanOrganizationsData() {

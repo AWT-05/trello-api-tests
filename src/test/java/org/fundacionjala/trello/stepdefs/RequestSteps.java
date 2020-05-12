@@ -146,6 +146,11 @@ public class RequestSteps {
         }
     }
 
+    /**
+     * Saves the id in a map.
+     *
+     * @param key expected data.
+     */
     @And("I save the {string} value to clean (organization)(board)(label)(list) workspace")
     public void iSaveTheValueToCleanOrganizationWorkspace(final String key) {
         context.saveIds(key, response.jsonPath().getString("id"));
