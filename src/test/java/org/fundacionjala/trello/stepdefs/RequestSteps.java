@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -143,5 +144,10 @@ public class RequestSteps {
             assertEquals(response.jsonPath().getString(key), expectedData.get(key),
                     String.format(DATA_MATCH_ERROR_MSG, key));
         }
+    }
+
+    @And("I save the {string} value to clean (organization)(board)(label)(list) workspace")
+    public void iSaveTheValueToCleanOrganizationWorkspace(final String key) {
+        context.saveIds(key, response.jsonPath().getString("id"));
     }
 }
