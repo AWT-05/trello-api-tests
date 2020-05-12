@@ -7,7 +7,7 @@ import org.fundacionjala.trello.context.Context;
 
 public class OrganizationHooks {
 
-    private static final  int CLEAN_CONTEXT_ORDER_VALUE = 20;
+    private static final int CLEAN_CONTEXT_ORDER_VALUE = 20;
     private final Context context;
     private Response response;
     private final IRequestManager requestManager;
@@ -15,7 +15,7 @@ public class OrganizationHooks {
     /**
      * Initializes an instance of OrganizationHooks class.
      *
-     * @param context scenario context object.
+     * @param context        scenario context object.
      * @param requestManager to send request.
      */
     public OrganizationHooks(Context context, IRequestManager requestManager) {
@@ -27,7 +27,7 @@ public class OrganizationHooks {
      * Delete organizations
      */
     @After(value = "@deleteOrganization", order = CLEAN_CONTEXT_ORDER_VALUE)
-    public void cleanOrganizationsData(){
+    public void cleanOrganizationsData() {
         context.getIdsByKey("organizationId").
                 forEach(id -> response = requestManager.init(context).delete("/organizations/".concat(id)));
     }
