@@ -26,7 +26,13 @@ public class RequestManagerRestAssured implements IRequestManager {
         context = new Context();
     }
 
-    public RequestManagerRestAssured init(Context context) {
+    /**
+     * Initialize the request specification, cleaning any parameters.
+     *
+     * @param context when save the request specification.
+     * @return the request manager object.
+     */
+    public RequestManagerRestAssured init(final Context context) {
         this.context = context;
         this.reqSpec = context.getReqSpec();
         return this;

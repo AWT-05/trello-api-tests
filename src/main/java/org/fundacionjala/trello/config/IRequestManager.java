@@ -10,6 +10,7 @@ public interface IRequestManager {
     /**
      * Initialize the request specification, cleaning any parameters.
      *
+     * @param context when save the request specification.
      * @return the request manager object.
      */
     IRequestManager init(Context context);
