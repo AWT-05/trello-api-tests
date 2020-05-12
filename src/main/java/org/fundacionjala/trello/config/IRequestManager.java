@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.config;
 
+import io.restassured.response.Response;
 import org.fundacionjala.trello.context.Context;
 
 import java.util.Map;
@@ -43,7 +44,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Context get(String endpoint);
+    Response get(String endpoint);
 
     /**
      * Sends a DELETE request to an <code>endpoint</code>.
@@ -51,7 +52,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Context delete(String endpoint);
+    Response delete(String endpoint);
 
     /**
      * Sends a POST request to an <code>endpoint</code>.
@@ -59,7 +60,7 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Context post(String endpoint);
+    Response post(String endpoint);
 
     /**
      * Sends a PUT request to an <code>endpoint</code>.
@@ -67,5 +68,5 @@ public interface IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    Context put(String endpoint);
+    Response put(String endpoint);
 }

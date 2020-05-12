@@ -20,10 +20,10 @@ public class RequestManagerRestAssured implements IRequestManager {
 
     private RequestSpecification reqSpec;
     private Context context;
-    private Response response;
 
     public RequestManagerRestAssured() {
         reqSpec = RequestSpecUtils.build();
+        context = new Context();
     }
 
     public RequestManagerRestAssured init(Context context) {
@@ -71,10 +71,8 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Context get(final String endpoint) {
-        response = given(reqSpec).when().get(mapOut(endpoint));
-        context.saveResponse(context.PUBLIC_KEY, response);
-        return context;
+    public Response get(final String endpoint) {
+        return given(reqSpec).when().get(mapOut(endpoint));
     }
 
     /**
@@ -83,10 +81,8 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Context delete(final String endpoint) {
-        response = given(reqSpec).when().delete(mapOut(endpoint));
-        context.saveResponse(context.PUBLIC_KEY, response);
-        return context;
+    public Response delete(final String endpoint) {
+        return given(reqSpec).when().delete(mapOut(endpoint));
     }
 
     /**
@@ -95,10 +91,8 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Context post(final String endpoint) {
-        response = given(reqSpec).when().post(mapOut(endpoint));
-        context.saveResponse(context.PUBLIC_KEY, response);
-        return context;
+    public Response post(final String endpoint) {
+        return given(reqSpec).when().post(mapOut(endpoint));
     }
 
     /**
@@ -107,10 +101,8 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @param endpoint The path to send the request to.
      * @return The response of the request.
      */
-    public Context put(final String endpoint) {
-        response = given(reqSpec).when().put(mapOut(endpoint));
-        context.saveResponse(context.PUBLIC_KEY, response);
-        return context;
+    public Response put(final String endpoint) {
+        return given(reqSpec).when().put(mapOut(endpoint));
     }
 
     public static void displayFiltersData() {

@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
@@ -55,7 +56,7 @@ public class RequestSteps {
      */
     @When("I send a GET request to {string}")
     public void sendGETRequestWithParameters(final String endpoint) {
-        response = requestManager.init(context).get(endpoint).response();
+        response = requestManager.init(context).get(endpoint);
     }
 
     /**
@@ -65,7 +66,7 @@ public class RequestSteps {
      */
     @When("I send a DELETE request to {string}")
     public void sendDELETERequestWithParameters(final String endpoint) {
-        response = requestManager.init(context).delete(endpoint).response();
+        response = requestManager.init(context).delete(endpoint);
     }
 
     /**
@@ -76,7 +77,7 @@ public class RequestSteps {
      */
     @When("I send a POST request to {string} with the following parameters")
     public void sendPOSTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.init(context).params(params).post(endpoint).response();
+        response = requestManager.init(context).queryParams(params).post(endpoint);
     }
 
     /**
@@ -87,6 +88,11 @@ public class RequestSteps {
      */
     @When("I send a PUT request to {string} with the following parameters")
     public void sendPUTRequestWithParameters(final String endpoint, final Map<String, String> params) {
-        response = requestManager.init(context).params(params).put(endpoint).response();
+        response = requestManager.init(context).queryParams(params).put(endpoint);
+    }
+
+    @And("I save the response as {string}")
+    public void iSaveTheResponseAs(String responseKey) {
+        context.saveResponse(responseKey, response);
     }
 }
