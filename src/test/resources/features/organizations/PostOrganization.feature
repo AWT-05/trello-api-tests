@@ -1,4 +1,4 @@
-@funcional
+@functional
 Feature: Organization Controller
 
   Background: Set authentication
@@ -10,7 +10,7 @@ Feature: Organization Controller
       | displayName | New organization test                |
       | desc        | Description of new organization test |
       | website     | fundacion-jala.org                   |
-    And I save the "organizationId" value to clean organization workspace
+    And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
     And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
     And I validate the response contains the following data
