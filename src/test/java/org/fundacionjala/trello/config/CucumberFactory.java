@@ -2,6 +2,8 @@ package org.fundacionjala.trello.config;
 
 import io.cucumber.core.backend.ObjectFactory;
 import io.cucumber.picocontainer.PicoFactory;
+import org.fundacionjala.trello.throwables.InitializationException;
+import org.fundacionjala.trello.throwables.NotDefinedValueException;
 
 public class CucumberFactory implements ObjectFactory {
 
@@ -12,7 +14,7 @@ public class CucumberFactory implements ObjectFactory {
         if ("restassured".equals(requestLibrary.toLowerCase())) {
             addClass(RequestManagerRestAssured.class);
         } else {
-            throw new RuntimeException("<".concat(requestLibrary).concat("> is not a defined value"));
+            throw new NotDefinedValueException("<".concat(requestLibrary).concat("> is not a defined value"));
         }
     }
 
