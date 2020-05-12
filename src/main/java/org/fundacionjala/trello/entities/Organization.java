@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Organization {
 
-    private final static String endpoint = "/organizations";
+    private final String endpoint = "/organizations";
 
     private Context context;
     private IRequestManager requestManager;
