@@ -71,12 +71,4 @@ public interface IRequestManager {
      * @return The response of the request.
      */
     Response put(String endpoint);
-
-    /**
-     * Verify the responses of json schema.
-     *
-     * @param response   response.
-     * @param schemaPath json schema path.
-     */
-    void verifyJsonSchema(Response response, String schemaPath);
 }

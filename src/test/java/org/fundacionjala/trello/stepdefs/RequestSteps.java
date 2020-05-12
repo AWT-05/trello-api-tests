@@ -1,12 +1,12 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.fundacionjala.trello.config.IRequestManager;
 import org.fundacionjala.trello.context.Context;
+import org.fundacionjala.trello.utils.JsonSchemaUtils;
 import org.fundacionjala.trello.utils.Mapper;
 
 import java.util.Map;
@@ -101,7 +101,7 @@ public class RequestSteps {
      *
      * @param responseKey key identifier.
      */
-    @And("I save response as {string}")
+    @When("I save response as {string}")
     public void iSaveResponseAs(final String responseKey) {
         context.saveResponse(responseKey, response);
     }
@@ -121,9 +121,9 @@ public class RequestSteps {
      *
      * @param schemaPath json schema path.
      */
-    @And("I validate the response body should match with {string} JSON schema")
+    @Then("I validate the response body should match with {string} JSON schema")
     public void iValidateTheResponseBodyShouldMatchWithJSONSchema(final String schemaPath) {
-        requestManager.verifyJsonSchema(response, schemaPath);
+        JsonSchemaUtils.verifyJsonSchema(response, schemaPath);
     }
 
     /**
@@ -131,7 +131,7 @@ public class RequestSteps {
      *
      * @param data expected data.
      */
-    @And("I validate the response contains the following data")
+    @Then("I validate the response contains the following data")
     public void iValidateTheResponseContainsTheFollowingData(final Map<String, String> data) {
         Map<String, String> expectedData = Mapper.replaceData(data, context.getResponses());
         for (String key : data.keySet()) {

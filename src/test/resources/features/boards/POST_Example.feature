@@ -10,4 +10,4 @@ Feature: Board Controller
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/getBoardSchema.json" JSON schema
     And I validate the response contains the following data
-      | name | new_test_trello_api_board|
+      | name | new_test_trello_api_board |
