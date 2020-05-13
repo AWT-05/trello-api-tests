@@ -22,7 +22,7 @@ public final class JsonSchemaUtils {
     /**
      * Verify the responses of json schema.
      *
-     * @param response   response.
+     * @param response   response from commons steps.
      * @param schemaPath json schema path.
      */
     public static void verifyJsonSchema(final Response response, final String schemaPath) {
@@ -33,7 +33,7 @@ public final class JsonSchemaUtils {
     /**
      * Verify the data table.
      *
-     * @param response  response.
+     * @param response  response from commons steps.
      * @param responses map of responses.
      * @param data      map of data table.
      */
@@ -45,5 +45,4 @@ public final class JsonSchemaUtils {
                     String.format(DATA_MATCH_ERROR_MSG, key));
         }
     }
-
 }

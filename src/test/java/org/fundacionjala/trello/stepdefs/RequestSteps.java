@@ -111,7 +111,7 @@ public class RequestSteps {
      * @param key expected data.
      */
     @When("I save the id value to clean {string} workspace")
-    public void iSaveTheValueToCleanOrganizationWorkspace(final String key) {
+    public void saveTheValueToCleanWorkspace(final String key) {
         context.saveIds(key, response.jsonPath().getString(JSON_PATH_STRING_ID));
     }
 
@@ -122,7 +122,7 @@ public class RequestSteps {
      * @param body     request json body.
      */
     @When("I send a POST request to {string} with the following json body")
-    public void iSendAPOSTRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+    public void sendPOSTRequestWithJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).post(endpoint);
         context.setResponse(response);
     }
@@ -134,7 +134,7 @@ public class RequestSteps {
      * @param body     request json body.
      */
     @When("I send a PUT request to {string} with the following json body")
-    public void iSendAPUTRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+    public void sendPUTRequestWithJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).put(endpoint);
         context.setResponse(response);
     }
