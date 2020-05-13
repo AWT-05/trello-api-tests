@@ -6,12 +6,12 @@ import org.fundacionjala.trello.context.Context;
 
 public class BackgroundStepDefs {
 
-    private Context context;
-    private Organization org;
+    private final Context context;
+    private final Organization organization;
 
     public BackgroundStepDefs(final Context context, final Organization org) {
         this.context = context;
-        this.org = org;
+        organization = org;
     }
 
     /**
@@ -21,6 +21,6 @@ public class BackgroundStepDefs {
      */
     @When("I have an organization created as {string}")
     public void haveAnOrgCreated(final String responseKey) {
-        org.createNew(responseKey);
+        organization.createNew(responseKey);
     }
 }

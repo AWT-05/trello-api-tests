@@ -13,9 +13,7 @@
     "logoHash",
     "logoUrl",
     "products",
-    "powerUps",
-    "idMemberCreator",
-    "limits"
+    "powerUps"
   ],
   "properties": {
     "id": {
@@ -28,15 +26,7 @@
       "type": "string"
     },
     "descData": {
-      "type": "object",
-      "required": [
-        "emoji"
-      ],
-      "properties": {
-        "emoji": {
-          "type": "object"
-        }
-      }
+      "type": ["object", "null"]
     },
     "website": {
       "type": "string"
@@ -63,12 +53,6 @@
     "powerUps": {
       "type": "array",
       "default": []
-    },
-    "idMemberCreator": {
-      "type": "string"
-    },
-    "limits": {
-      "type": "object"
     }
   }
 }

@@ -10,7 +10,7 @@ import java.util.Map;
 public class Organization {
 
     private final String endpoint = "/organizations";
-
+    private static final String JSON_PATH_STRING_ID = "id";
     private Context context;
     private IRequestManager requestManager;
 
@@ -39,5 +39,6 @@ public class Organization {
         orgParams.put("displayName", displayName);
         Response response = requestManager.init(context).queryParams(orgParams).post(endpoint);
         context.saveResponse(key, response);
+        context.saveIds(key, response.jsonPath().getString(JSON_PATH_STRING_ID));
     }
 }
