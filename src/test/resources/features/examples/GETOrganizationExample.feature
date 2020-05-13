@@ -6,4 +6,4 @@ Feature: Organization Controller
 
   @deleteOrganization
   Scenario: Get an organization
-    When I send a GET request to "/organizations/{org.id}"
+    When I send a GET request to "/organizations/{organization.id}"
