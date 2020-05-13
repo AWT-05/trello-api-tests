@@ -9,4 +9,4 @@ Feature: Label Controller
   @deleteBoard
   Scenario: Delete a label created
     When I send a DELETE request to "/labels/{label.id}"
-
+    Then I validate the response has status code 200

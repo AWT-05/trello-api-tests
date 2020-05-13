@@ -10,4 +10,9 @@ Feature: Label Controller
       | name    | feature    |
       | color   | orange     |
       | idBoard | {board.id} |
-
+    Then  I validate the response has status code 200
+    And I validate the response body should match with "/labels/labelSchema.json" JSON schema
+    And I validate the response contains the following data
+      | idBoard | {board.id} |
+      | name    | feature    |
+      | color   | orange     |
