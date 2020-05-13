@@ -16,7 +16,6 @@ public class ValidationSteps {
 
     private static final String STATUS_CODE_ERROR_MESSAGE = "Expected status codeuser "
             + "does not match actual status code.";
-    private static final String DATA_MATCH_ERROR_MSG = "The '%s' field does not match with expected value.";
 
     private final Context context;
 
@@ -56,10 +55,6 @@ public class ValidationSteps {
      */
     @Then("I validate the response contains the following data")
     public void iValidateTheResponseContainsTheFollowingData(final Map<String, String> data) {
-        Map<String, String> expectedData = Mapper.replaceData(data, context.getResponses());
-        for (String key : data.keySet()) {
-            assertEquals(context.getResponse().jsonPath().getString(key), expectedData.get(key),
-                    String.format(DATA_MATCH_ERROR_MSG, key));
-        }
+        JsonSchemaUtils.verifyResponseData(context.getResponse(), context.getResponses(), data);
     }
 }

@@ -111,9 +111,14 @@ public class RequestSteps {
      *
      * @param key expected data.
      */
-    @And("I save the id value to clean {string} workspace")
+    @When("I save the id value to clean {string} workspace")
     public void iSaveTheValueToCleanOrganizationWorkspace(final String key) {
         context.saveIds(key, response.jsonPath().getString(JSON_PATH_STRING_ID));
     }
 
+    @When("I send a POST request to {string} with the following json body")
+    public void iSendAPOSTRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+        response = requestManager.init(context).body(body).post(endpoint);
+        context.setResponse(response);
+    }
 }
