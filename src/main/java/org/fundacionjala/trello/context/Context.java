@@ -16,6 +16,7 @@ public class Context {
     private RequestSpecification reqSpec;
     private Map<String, Response> responses;
     private Map<String, List<String>> mapIds;
+    private Response response;
 
     /**
      * Initializes an instance of Context class.
@@ -91,5 +92,24 @@ public class Context {
      */
     public List<String> getIdsByKey(final String key) {
         return mapIds.getOrDefault(key, new ArrayList<>());
+    }
+
+
+    /**
+     * Saves the response.
+     *
+     * @param response response.
+     */
+    public void setResponse(final Response response) {
+        this.response = response;
+    }
+
+    /**
+     * Gets the context response.
+     *
+     * @return response value.
+     */
+    public Response getResponse() {
+        return response;
     }
 }

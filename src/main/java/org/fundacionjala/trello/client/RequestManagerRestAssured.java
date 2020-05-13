@@ -67,7 +67,7 @@ public class RequestManagerRestAssured implements IRequestManager {
      * @return the request manager object.
      */
     public RequestManagerRestAssured body(final String jsonData) {
-        reqSpec = given(reqSpec).body(jsonData);
+        reqSpec = given(reqSpec).body(mapOut(jsonData));
         return this;
     }
 
