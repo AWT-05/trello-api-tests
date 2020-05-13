@@ -2,7 +2,7 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.fundacionjala.trello.config.RequestManagerRestAssured;
+import org.fundacionjala.trello.client.RequestManagerRestAssured;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.RequestSpecUtils;
 

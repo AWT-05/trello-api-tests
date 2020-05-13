@@ -5,7 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.fundacionjala.trello.config.IRequestManager;
+import org.fundacionjala.trello.client.IRequestManager;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.RequestSpecUtils;
 
