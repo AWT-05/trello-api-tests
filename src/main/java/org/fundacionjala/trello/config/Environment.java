@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -33,7 +34,7 @@ public final class Environment {
         try (FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)) {
             properties = new Properties();
             properties.load(fileInputStream);
-        } catch (MissingConfigurationsError e) {
+        } catch (FileNotFoundException e) {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
