@@ -7,10 +7,13 @@ import org.fundacionjala.trello.context.Context;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.fundacionjala.trello.utils.Keys.ORGANIZATION;
+
 public class Organization {
 
     private final String endpoint = "/organizations";
-
+    private static final String JSON_PATH_STRING_ID = "id";
+    private static final String ORGANIZATION_NAME = "displayName";
     private Context context;
     private IRequestManager requestManager;
 
@@ -22,24 +25,23 @@ public class Organization {
     /**
      * Creates a new organization.
      *
-     * @param key a string to save the response
      */
-    public void createNew(final String key) {
-        createNew(key, "API Test team");
+    public void createNew() {
+        createNew("New organization test");
     }
 
     /**
      * Creates a new organization with a given name.
      *
-     * @param key a string to save the response
-     * @param displayName value name of the organization.
+     * @param organizationName value name of the organization.
      */
-    public void createNew(final String key, final String displayName) {
+    public void createNew(final String organizationName) {
+        String org = ORGANIZATION.getValue();
         Map<String, String> orgParams = new HashMap<>();
-        orgParams.put("displayName", displayName);
-
+        orgParams.put(ORGANIZATION_NAME, organizationName);
 
         Response response = requestManager.init(context).queryParams(orgParams).post(endpoint);
-        context.saveResponse(key, response);
+        context.saveResponse(org, response);
+        context.saveIds(org, response.jsonPath().getString(JSON_PATH_STRING_ID));
     }
 }
