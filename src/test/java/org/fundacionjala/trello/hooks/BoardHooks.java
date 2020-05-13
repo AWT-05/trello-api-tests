@@ -18,7 +18,7 @@ public class BoardHooks {
      * @param context scenario context object.
      * @param requestManager options to sending requests.
      */
-    public BoardHooks(Context context, IRequestManager requestManager) {
+    public BoardHooks(final Context context, final IRequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }

@@ -23,7 +23,7 @@ public final class Label {
     }
 
     /**
-     * Creates a new label with.
+     * Creates a new label.
      */
     public void createNew() {
         createNew("feature test", "sky");
@@ -33,8 +33,9 @@ public final class Label {
      * Creates a new label with a given name.
      *
      * @param labelName value name for the board.
+     * @param color Valid values: yellow, purple, blue, red, green, orange, black, sky, pink, lime.
      */
-    public void createNew(final String labelName, String color) {
+    public void createNew(final String labelName, final String color) {
         String label = LABEL.getValue();
         String idBoard = context.getIdsByKey(BOARD.getValue()).get(0);
 

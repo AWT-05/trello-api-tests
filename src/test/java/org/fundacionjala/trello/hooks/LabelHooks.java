@@ -18,7 +18,7 @@ public class LabelHooks {
      * @param context scenario context object.
      * @param requestManager options to sending requests.
      */
-    public LabelHooks(Context context, IRequestManager requestManager) {
+    public LabelHooks(final Context context, final IRequestManager requestManager) {
         this.context = context;
         this.requestManager = requestManager;
     }

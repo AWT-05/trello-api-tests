@@ -38,6 +38,9 @@ public class BackgroundStepDefs {
         board.createNew();
     }
 
+    /**
+     * Creates a new label by default.
+     */
     @When("I have a label created")
     public void iHaveALabelCreated() {
         label.createNew();
