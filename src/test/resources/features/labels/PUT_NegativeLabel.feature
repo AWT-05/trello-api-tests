@@ -7,7 +7,9 @@ Feature: Label Controller
   Valid id match to the following Pattern: ^[0-9a-fA-F]{32}$
   and we are validating that non-existent ids throw a 404 status code.
 
-    When I send a GET request to "/labels/<Non existent>"
+    When I send a PUT request to "/labels/<Non existent>" with the following parameters
+      | name  | test |
+      | color | lime |
     Then I validate the response has status code 404
     And I validate the response contains the following value
     """
@@ -17,7 +19,7 @@ Feature: Label Controller
     Examples: Non-existent ids
 
       | Non existent             |
-      | {empty}                  |
+#      | {empty}                  | Cannot PUT /1/labels/?key={{API_KEY}}&token={{API_TOKEN}}&color=lime&name=test
       | 000000000000000000000000 |
       | aaaaaaaaaaaaaaaaaaaaaaaa |
       | 00000000000fffffffffffff |
@@ -33,7 +35,9 @@ Feature: Label Controller
   Valid id match to the following Pattern: ^[0-9a-fA-F]{32}$
   and we are validating that invalid ids throw a 400 status code.
 
-    When I send a GET request to "/labels/<Invalid id>"
+    When I send a PUT request to "/labels/<Invalid id>" with the following parameters
+      | name  | test |
+      | color | lime |
     Then I validate the response has status code 400
     And I validate the response contains the following value
     """

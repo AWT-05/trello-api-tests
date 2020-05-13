@@ -61,6 +61,18 @@ public class RequestSteps {
     }
 
     /**
+     * Sends GET request with parameters.
+     *
+     * @param endpoint resource endpoint.
+     * @param params   request parameters.
+     */
+    @When("I send a GET request to {string} with the following parameters")
+    public void iSendAGETRequestToWithTheFollowingParameters(final String endpoint, final Map<String, String> params) {
+        response = requestManager.init(context).queryParams(params).get(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
      * Sends DELETE request.
      *
      * @param endpoint resource endpoint.

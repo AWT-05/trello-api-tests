@@ -39,7 +39,10 @@
     },
     "color": {
       "$id": "#/properties/color",
-      "type": "string",
+      "type": [
+        "string",
+        "null"
+      ],
       "examples": [
         "lime",
         "yellow",
