@@ -1,7 +1,7 @@
 @functional
 Feature: Organization Controller
 
-  Background: Set authentication and create Organization
+  Background: Set authentication
     Given I set authentication using API key and token
 
   @deleteOrganization
