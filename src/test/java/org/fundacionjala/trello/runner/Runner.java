@@ -18,12 +18,14 @@ import org.testng.annotations.DataProvider;
 )
 public final class Runner extends AbstractTestNGCucumberTests {
 
+    private static final String DATA_THREAD_COUNT_KEY = "dataproviderthreadcount";
+
     /**
      * Executes code before all scenarios.
      */
     @BeforeTest
     public void beforeAllScenarios() {
-        System.setProperty("dataproviderthreadcount", Environment.getInstance().getThreadCount());
+        System.setProperty(DATA_THREAD_COUNT_KEY, Environment.getInstance().getThreadCount());
     }
 
     /**
