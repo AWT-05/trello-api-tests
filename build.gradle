@@ -19,7 +19,6 @@ dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.28'
     implementation group: 'io.rest-assured', name: 'rest-assured', version: '4.3.0'
     implementation group: 'io.rest-assured', name: 'json-schema-validator', version: '4.3.0'
-    implementation group: 'org.apache.maven.plugins', name: 'maven-surefire-plugin', version: '3.0.0-M4'
     testImplementation group: 'io.cucumber', name: 'cucumber-java', version: '5.6.0'
     testImplementation group: 'io.cucumber', name: 'cucumber-testng', version: '5.6.0'
     testImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '5.6.0'
@@ -59,6 +58,7 @@ task executeBDDTests(type: Test) {
         jvmArgs = ['-Dcucumber.execution.strict=' + true]
         jvmArgs = ['-Dcucumber.plugin=io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm']
         jvmArgs = ['-Dcucumber.filter.tags=' + filterTags]
+        jvmArgs = ['-DcucumberThreadCount=' + cucumberThreadCount]
     }
     // Flag to show console output.
     testLogging.showStandardStreams = true
