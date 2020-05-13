@@ -4,7 +4,7 @@ public enum Keys {
     BOARD("board"),
     LABEL("label"),
     LIST("list"),
-    ORGANIZATION("org");
+    ORGANIZATION("organization");
 
     private final String value;
 
