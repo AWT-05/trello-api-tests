@@ -4,6 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 /**
  * Cucumber TestNG runner class.
@@ -30,5 +31,11 @@ public class Runner extends AbstractTestNGCucumberTests {
     @AfterTest
     public void afterAllScenarios() {
         // Code executed after features execution.
+    }
+
+    @Override
+    @DataProvider(parallel = true)
+    public Object[][] scenarios() {
+        return super.scenarios();
     }
 }
