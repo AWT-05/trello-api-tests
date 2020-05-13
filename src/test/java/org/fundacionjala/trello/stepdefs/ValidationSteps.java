@@ -9,7 +9,7 @@ import java.util.Map;
 import static org.testng.Assert.assertEquals;
 
 /**
- * Groups of assertions step definitions.
+ * Groups of validation steps definitions.
  */
 public class ValidationSteps {
 

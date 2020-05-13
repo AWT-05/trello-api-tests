@@ -106,7 +106,7 @@ public class RequestSteps {
     }
 
     /**
-     * Saves the id in a map.
+     * Saves the instance id in the context..
      *
      * @param key expected data.
      */
