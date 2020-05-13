@@ -3,6 +3,7 @@ package org.fundacionjala.trello.config;
 import io.cucumber.core.backend.ObjectFactory;
 import io.cucumber.picocontainer.PicoFactory;
 import org.fundacionjala.trello.client.RequestManagerRestAssured;
+import org.fundacionjala.trello.throwables.NotDefinedValueException;
 
 public class CucumberFactory implements ObjectFactory {
 
