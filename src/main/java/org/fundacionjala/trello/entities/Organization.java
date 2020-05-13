@@ -37,8 +37,6 @@ public class Organization {
     public void createNew(final String key, final String displayName) {
         Map<String, String> orgParams = new HashMap<>();
         orgParams.put("displayName", displayName);
-
-
         Response response = requestManager.init(context).queryParams(orgParams).post(endpoint);
         context.saveResponse(key, response);
     }

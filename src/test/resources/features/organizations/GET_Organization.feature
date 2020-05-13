@@ -6,4 +6,3 @@ Feature: Organization Controller
 
   Scenario: Get an organization
     When I send a GET request to "/organizations/{org.id}"
-

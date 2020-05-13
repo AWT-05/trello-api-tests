@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
@@ -116,9 +115,27 @@ public class RequestSteps {
         context.saveIds(key, response.jsonPath().getString(JSON_PATH_STRING_ID));
     }
 
+    /**
+     * Sends POST request with json body.
+     *
+     * @param endpoint resource endpoint.
+     * @param body     request json body.
+     */
     @When("I send a POST request to {string} with the following json body")
     public void iSendAPOSTRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).post(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
+     * Sends PUT request with json body.
+     *
+     * @param endpoint resource endpoint.
+     * @param body     request json body.
+     */
+    @When("I send a PUT request to {string} with the following json body")
+    public void iSendAPUTRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+        response = requestManager.init(context).body(body).put(endpoint);
         context.setResponse(response);
     }
 }

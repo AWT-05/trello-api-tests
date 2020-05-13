@@ -3,7 +3,6 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.JsonSchemaUtils;
-import org.fundacionjala.trello.utils.Mapper;
 
 import java.util.Map;
 

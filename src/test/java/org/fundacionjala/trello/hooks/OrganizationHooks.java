@@ -2,7 +2,7 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import io.restassured.response.Response;
-import org.fundacionjala.trello.config.IRequestManager;
+import org.fundacionjala.trello.client.IRequestManager;
 import org.fundacionjala.trello.context.Context;
 
 public class OrganizationHooks {
