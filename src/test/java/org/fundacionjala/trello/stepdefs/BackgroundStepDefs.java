@@ -18,13 +18,12 @@ public class BackgroundStepDefs {
     }
 
     /**
-     * Create a organization by default.
+     * Creates an organization by default.
      *
-     * @param responseKey a string to save the response
      */
-    @When("I have an organization created as {string}")
-    public void haveAnOrgCreated(final String responseKey) {
-        org.createNew(responseKey);
+    @When("I have an organization created")
+    public void haveAnOrgCreated() {
+        org.createNew();
     }
 
     /**

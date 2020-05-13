@@ -28,7 +28,7 @@ public class OrganizationHooks {
      */
     @After(value = "@deleteOrganization", order = CLEAN_CONTEXT_ORDER_VALUE)
     public void cleanOrganizationsData() {
-        context.getIdsByKey("organizationId").
+        context.getIdsByKey("organization").
                 forEach(id -> response = requestManager.init(context).delete("/organizations/".concat(id)));
     }
 }

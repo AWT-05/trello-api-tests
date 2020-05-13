@@ -29,7 +29,7 @@
       "type": ["object", "null"]
     },
     "website": {
-      "type": "string"
+      "type": ["string", "null"]
     },
     "teamType": {
       "type": "null"
