@@ -1,5 +1,6 @@
 package org.fundacionjala.trello.config;
 
+import org.fundacionjala.trello.throwables.MissingConfigurationsError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,10 +38,12 @@ public final class Environment {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
+            throw new MissingConfigurationsError(message);
         } catch (IOException e) {
             String message = "Input/Output exception, failed to load gradle.properties";
             LOGGER.error(message);
             LOGGER.info(message, e);
+            throw new MissingConfigurationsError(message);
         }
     }
 
