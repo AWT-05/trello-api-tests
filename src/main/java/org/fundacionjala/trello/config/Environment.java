@@ -1,6 +1,6 @@
 package org.fundacionjala.trello.config;
 
-import org.fundacionjala.trello.throwables.InitializationException;
+import org.fundacionjala.trello.throwables.MissingConfigurationsError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,17 +33,16 @@ public final class Environment {
         try (FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)) {
             properties = new Properties();
             properties.load(fileInputStream);
-        } catch (InitializationException e) {
+        } catch (MissingConfigurationsError e) {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
-            throw new InitializationException(message);
+            throw new MissingConfigurationsError(message);
         } catch (IOException e) {
             String message = "Input/Output exception, failed to load gradle.properties";
             LOGGER.error(message);
             LOGGER.info(message, e);
-            //insert custom exception here
-            throw new InitializationException(message);
+            throw new MissingConfigurationsError(message);
         }
     }
 
