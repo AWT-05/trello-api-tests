@@ -16,7 +16,7 @@ import org.testng.annotations.DataProvider;
         glue = {"org.fundacionjala.trello"},
         features = {"src/test/resources/features"}
 )
-public class Runner extends AbstractTestNGCucumberTests {
+public final class Runner extends AbstractTestNGCucumberTests {
 
     /**
      * Executes code before all scenarios.
