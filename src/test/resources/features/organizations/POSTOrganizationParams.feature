@@ -29,7 +29,7 @@ Feature: Organization Controller
       | website     | http://fundacion-jala.org            |
 
   @deleteOrganization
-  Scenario: Create an Organization with unique paramenter
+  Scenario: Create an Organization with unique parameter
     When I send a POST request to "/organizations" with the following parameters
       | displayName | New organization test          |
       | name        | new_organization_test_unique23 |
