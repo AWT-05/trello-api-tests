@@ -71,5 +71,3 @@ Feature: Organization Controller
       | name        | new_organization_test_unique23       |
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
-
-
