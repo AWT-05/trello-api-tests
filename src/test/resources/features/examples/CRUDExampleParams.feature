@@ -6,6 +6,7 @@ Feature: Organization Controller
     When I send a POST request to "/organizations" with the following parameters
       | displayName | New organization test |
     And I save response as "organization"
+    And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
 
   @deleteOrganization
