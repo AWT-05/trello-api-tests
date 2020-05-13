@@ -3,17 +3,18 @@ package org.fundacionjala.trello.config;
 import io.cucumber.core.backend.ObjectFactory;
 import io.cucumber.picocontainer.PicoFactory;
 import org.fundacionjala.trello.client.RequestManagerRestAssured;
+import org.fundacionjala.trello.throwables.MissingConfigurationsException;
 
 public class CucumberFactory implements ObjectFactory {
 
     private final PicoFactory delegate = new PicoFactory();
 
-    public CucumberFactory() {
+    public CucumberFactory() throws MissingConfigurationsException {
         String requestLibrary = Environment.getInstance().getRequestLibrary();
         if ("restassured".equals(requestLibrary.toLowerCase())) {
             addClass(RequestManagerRestAssured.class);
         } else {
-            throw new RuntimeException("<".concat(requestLibrary).concat("> is not a defined value"));
+            throw new MissingConfigurationsException("<".concat(requestLibrary).concat("> is not a defined library"));
         }
     }
 
