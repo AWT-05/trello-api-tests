@@ -1,4 +1,4 @@
-package org.fundacionjala.trello.config;
+package org.fundacionjala.trello.client;
 
 import io.restassured.response.Response;
 import org.fundacionjala.trello.context.Context;
