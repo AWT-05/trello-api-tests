@@ -1,12 +1,15 @@
 package org.fundacionjala.trello.stepdefs;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.restassured.response.Response;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.JsonSchemaUtils;
 
 import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Groups of validation steps definitions.
@@ -15,6 +18,7 @@ public class ValidationSteps {
 
     private static final String STATUS_CODE_ERROR_MESSAGE = "Expected status codeuser "
             + "does not match actual status code.";
+    private static final String NO_EQUALS_ERROR_MESSAGE = "Expected value does not match actual value.";
 
     private final Context context;
 
@@ -55,5 +59,11 @@ public class ValidationSteps {
     @Then("I validate the response contains the following data")
     public void iValidateTheResponseContainsTheFollowingData(final Map<String, String> data) {
         JsonSchemaUtils.verifyResponseData(context.getResponse(), context.getResponses(), data);
+    }
+
+    @And("I validate the response contains the following value")
+    public void validateResponseContains(final String content) {
+        String actualContent = context.getResponse().body().asString();
+        assertEquals(content, actualContent, NO_EQUALS_ERROR_MESSAGE);
     }
 }
