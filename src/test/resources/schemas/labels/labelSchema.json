@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "examples": [
+    {
+      "id": "5ebb7d087f31fe0ca87b52d0",
+      "idBoard": "5ebabeeb076f7c01876e92f8",
+      "name": "feature",
+      "color": "lime"
+    }
+  ],
+  "required": [
+    "id",
+    "idBoard"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "string",
+      "examples": [
+        "5ebb7d087f31fe0ca87b52d0"
+      ]
+    },
+    "idBoard": {
+      "$id": "#/properties/idBoard",
+      "type": "string",
+      "examples": [
+        "5ebabeeb076f7c01876e92f8"
+      ]
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "examples": [
+        "feature"
+      ]
+    },
+    "color": {
+      "$id": "#/properties/color",
+      "type": "string",
+      "examples": [
+        "lime",
+        "yellow",
+        "purple",
+        "blue",
+        "red",
+        "green",
+        "orange",
+        "black",
+        "sky",
+        "pink"
+      ]
+    }
+  }
+}

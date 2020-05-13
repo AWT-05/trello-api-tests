@@ -38,7 +38,7 @@ public final class Board {
         Map<String, String> body = new HashMap<>();
         body.put("name", boardName);
 
-        Response response = requestManager.init(context).params(body).post(ENDPOINT);
+        Response response = requestManager.init(context).queryParams(body).post(ENDPOINT);
         context.saveResponse(board, response);
         String id = response.jsonPath().getString(ID_KEY);
         context.saveIds(board, id);
