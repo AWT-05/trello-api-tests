@@ -1,3 +1,4 @@
+@deleteLabel @deleteBoard
 Feature: Label Controller
 
   Background: Set authentication
@@ -5,8 +6,9 @@ Feature: Label Controller
     And I have a board created
     And I have a label created
 
-  @deleteLabel @deleteBoard
+  @functional
   Scenario: Update a Label created
+
     When I send a PUT request to "/labels/{label.id}" with the following parameters
       | name  | test |
       | color | lime |
@@ -19,8 +21,8 @@ Feature: Label Controller
       | color   | lime       |
 
 
-  @deleteLabel @deleteBoard
   Scenario Outline: Update a Label send only "name" field
+
     When I send a PUT request to "/labels/{label.id}" with the following parameters
       | name | <Value> |
     Then  I validate the response has status code 200
@@ -37,7 +39,6 @@ Feature: Label Controller
       | OnlyName |
 
 
-  @deleteLabel @deleteBoard
   Scenario Outline: Update a Label send only "color" field
   Valid color options: yellow, purple, blue, red, green, orange, black, sky, pink, lime
 
@@ -52,33 +53,31 @@ Feature: Label Controller
       | color   | <Expected>   |
 
     Examples: "color" values
-      | Input | Expected |
-#      | {empty} | null     |  [null] but found [null]
-      | sky   | sky      |
+      | Input   | Expected |
+      | {empty} | {null}   |
+      | {null}  | {null}   |
+      | sky     | sky      |
 
-  @deleteLabel @deleteBoard
-  Scenario Outline: Setting bad value "color" field
-  Valid color options: yellow, purple, blue, red, green, orange, black, sky, pink, lime
+  @smoke
+  Scenario Outline: Update fields by path parameters
 
-    When I send a PUT request to "/labels/{label.id}" with the following parameters
-      | color | <Bad Option> |
-    Then  I validate the response has status code 400
-    And I validate the response contains the following json
-    """
-    {
-      "message": "invalid value for color",
-      "error": "ERROR"
-    }
-    """
+    When I send a PUT request to "/labels/{label.id}/<Field>" with the following parameters
+      | value | <Value> |
+    Then  I validate the response has status code 200
+    And I validate the response body should match with "/labels/labelSchema.json" JSON schema
+    And I validate the response contains the following data
+      | id      | {label.id} |
+      | idBoard | {board.id} |
+      | <Field> | <Value>    |
 
     Examples: "color" values
-      | Bad Option |
-      | azure      |
-      | cyan       |
-      | 1          |
+      | Field | Value   |
+      | name  | Test    |
+      | name  | {empty} |
+      | color | lime    |
+      | color | black   |
 
-
-  @deleteLabel @deleteBoard
+  @functional
   Scenario Outline: No update "id" and "idBoard" fields
     When I send a PUT request to "/labels/{label.id}" with the following parameters
       | id      | <Value> |
@@ -99,3 +98,25 @@ Feature: Label Controller
       | 10                       |
       | *                        |
       | #                        |
+
+
+  @negative
+  Scenario Outline: Setting bad value "color" field
+  Valid color options: yellow, purple, blue, red, green, orange, black, sky, pink, lime
+
+    When I send a PUT request to "/labels/{label.id}" with the following parameters
+      | color | <Bad Option> |
+    Then  I validate the response has status code 400
+    And I validate the response contains the following json
+    """
+    {
+      "message": "invalid value for color",
+      "error": "ERROR"
+    }
+    """
+
+    Examples: "color" values
+      | Bad Option |
+      | azure      |
+      | cyan       |
+      | 1          |

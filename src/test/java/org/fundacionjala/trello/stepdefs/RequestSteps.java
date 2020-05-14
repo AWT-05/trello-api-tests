@@ -150,4 +150,10 @@ public class RequestSteps {
         response = requestManager.init(context).body(body).put(endpoint);
         context.setResponse(response);
     }
+
+    @When("I send a GET request to {string} with the following json body")
+    public void iSendAGETRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+        response = requestManager.init(context).body(body).get(endpoint);
+        context.setResponse(response);
+    }
 }
