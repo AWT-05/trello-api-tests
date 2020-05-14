@@ -53,6 +53,29 @@ Feature: Board Controller
       | ####!!!!!                  |
       | 12345679asdfqwerrtuyhgzxcv |
 
-
-
-    ########posible para aumentar
+  @negative
+  Scenario Outline: Using json body, update a board with invalid ids
+    When I send a PUT request to "/boards/{board.id}" with the following json body
+      """
+      {
+	    "name" : "Board name updated!",
+	    "desc" : "Description has been updated using a Json",
+	    "prefs/background" : "<value>"
+      }
+      """
+    Then I validate the response has status code 200
+    And I validate the response body should match with "/boards/putBoardSchema.json" JSON schema
+    And I validate the response contains the following data
+      | name             | Board name updated!                       |
+      | desc             | Description has been updated using a Json |
+      | prefs.background | <color>                                   |
+    Examples:
+      | value  | color  |
+      | green  | green  |
+      | blue   | blue   |
+      | pink   | pink   |
+      | purple | purple |
+      | lime   | lime   |
+      | sky    | sky    |
+      | red    | red    |
+      | grey   | grey   |
