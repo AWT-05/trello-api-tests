@@ -23,10 +23,10 @@ Feature: List Controller
       | pos     | <pos_expected>  |
       | idBoard | {board.id}      |
     Examples:
-      | pos_value | pos_expected | name_value                            | name_expected                         |
-      | top       | 8192         | Reviewed                              | Reviewed                              |
-      | bottom    | 65536        | With numbers 1234567890               | With numbers 1234567890               |
-      | 40000     | 40000        | With special chars <>!"#$%&/()=[]{}*+ | With special chars <>!"#$%&/()=[]{}*+ |
+      | pos_value | pos_expected | name_value                             | name_expected                          |
+      | top       | 8192         | Reviewed 2                             | Reviewed 2                             |
+      | bottom    | 65536        | With numbers 123456789                 | With numbers 123456789                 |
+      | 40000     | 40000        | With special chars <>!"#$%&/()=[]{}*+- | With special chars <>!"#$%&/()=[]{}*+- |
 
   @functional
   Scenario: Create a List copy of another List
@@ -42,6 +42,6 @@ Feature: List Controller
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
-      | name    | Reviewed copy |
-      | closed  | false         |
-      | idBoard | {board.id}    |
+      | name    | Reviewed copy json |
+      | closed  | false              |
+      | idBoard | {board.id}         |
