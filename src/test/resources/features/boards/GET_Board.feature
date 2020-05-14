@@ -21,13 +21,29 @@ Feature: Boards Controller
     When I send a GET request to "/boards/<value>"
     Then I validate the response has status code 400
     Examples:
-      | value                      |
-      | abcd                       |
-      | 1234                       |
-      | ####!!!!!                  |
-      | 12345679asdfqwerrtuyhgzxcv |
+      | value                         |
+      | zzzzzzzzzzzzzzzzzzzzzzzz      |
+      | ZZZZZZZZZZZZZZZZZZZZZZZZ      |
+      | $$$$$$$$$$$$$$$$$$$$$$$$      |
+      | ####!!!!!..abcd.........      |
+      | 12345679asdfqwerWERSDFAA      |
+      | aaaaaaaaaaaaaaaaaaa           |
+      | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 
   @negative
   Scenario: Try to get a board without an id
     When I send a GET request to "/boards/{empty}"
     Then I validate the response has status code 404
+
+
+  @negative
+  Scenario Outline: Try to get a board without an existing id
+    When I send a GET request to "/boards/<value>"
+    Then I validate the response has status code 404
+    Examples:
+      | value                    |
+      | {empty}                  |
+      | bbbbbbbbbbbbbbbbbbbbbbbb |
+      | 999999999999999999999999 |
+      | 5ebcf20b2a5ab832271a56fb |
+      | abcdef1234567890abcdeffa |

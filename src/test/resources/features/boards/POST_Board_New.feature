@@ -1,10 +1,10 @@
-@Smoke
+@deleteBoard
 Feature: Boards Controller
 
   Background: Set the authentication
     Given I set authentication using API key and token
 
-  @functional @deleteBoard
+  @functional
   Scenario: Create a board with just basic required parameters using a Json body
     When I send a POST request to "/boards" with the following json body
       """
@@ -18,7 +18,7 @@ Feature: Boards Controller
     And I validate the response contains the following data
       | name | Hello New Board! |
 
-  @deleteBoard
+  @Smoke
   Scenario: Create a board with optional parameters using Json body
     When I send a POST request to "/boards" with the following a Json body
       """
@@ -38,7 +38,7 @@ Feature: Boards Controller
       | desc             | This is the description for the new board created. |
       | prefs.background | green                                              |
 
-  @negative @deleteBoard
+  @negative
   Scenario: Create a board with invalid required parameters using a Json body
     When I send a POST request to "/boards" with the following json body
       """

@@ -1,11 +1,11 @@
-@Smoke  @deleteBoard
+@deleteBoard
 Feature: Boards Controller
 
   Background: Authenticate user and set up a board
     Given I set authentication using API key and token
     And I have a board created
 
-  @functional
+  @functional @Smoke
   Scenario: Update a created board
     When I send a PUT request to "/boards/{board.id}" with the following parameters
       | name             | Board name updated           |
