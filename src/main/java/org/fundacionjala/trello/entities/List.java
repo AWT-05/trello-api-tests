@@ -31,7 +31,7 @@ public class List {
     /**
      * Creates a new list with a given name.
      *
-     * @param listName value name for the board.
+     * @param listName value name for the list.
      * @param position Valid values: top, bottom, positive integer.
      */
     public void createNew(final String listName, final String position) {

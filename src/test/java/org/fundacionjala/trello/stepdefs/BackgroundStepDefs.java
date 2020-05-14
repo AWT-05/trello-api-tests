@@ -1,6 +1,5 @@
 package org.fundacionjala.trello.stepdefs;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.entities.Board;
@@ -52,7 +51,7 @@ public class BackgroundStepDefs {
     /**
      * Creates a new list by default.
      */
-    @And("I have a list created")
+    @When("I have a list created")
     public void iHaveAListCreated() {
         list.createNew();
     }
