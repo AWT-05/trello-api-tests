@@ -35,8 +35,28 @@ public class RequestSteps {
      * Sets authentication header to base request specification.
      */
     @Given("I set authentication using API key and token")
-    public void setAuthenticationToken() {
+    public void setAuthentication() {
         RequestSpecification reqSpec = RequestSpecUtils.buildWithAuth();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication header to base request specification,
+     * Only with API key
+     */
+    @Given("I set authentication using only an API key")
+    public void setAuthenticationAPIKey() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyApiKey();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication header to base request specification,
+     * Only with API key
+     */
+    @Given("I set authentication using only a Token")
+    public void setAuthenticationToken() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyToken();
         context.setReqSpec(reqSpec);
     }
 
