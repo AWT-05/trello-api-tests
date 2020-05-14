@@ -92,3 +92,31 @@ Feature: Organization Controller
       | evaluating especial characters []{}{}()]   |
       | evaluating especial characters @#$%^^&*(   |
       | evaluating CHARACTERS MIX 123!%@#&$**%     |
+
+  @deleteOrganization
+  Scenario: Update an Organization using Json body with leading white spaces
+    When I send a PUT request to "/organizations/{organization.id}" with the following json body
+      """
+      {
+	    "displayName" : " updating leading white spaces"
+      }
+      """
+    Then I validate the response has status code 400
+    And I validate the response body should match with "organizations/orgErrorSchema.json" JSON schema
+    And I validate the response contains the following data
+      | message | Display Name cannot begin or end with a space |
+      | error   | ERROR                                         |
+
+  @deleteOrganization
+  Scenario: Create an Organization using Json body with trailing white spaces
+    When I send a PUT request to "/organizations/{organization.id}" with the following json body
+      """
+      {
+	    "displayName" : "updating trailing white spaces "
+      }
+      """
+    Then I validate the response has status code 400
+    And I validate the response body should match with "organizations/orgErrorSchema.json" JSON schema
+    And I validate the response contains the following data
+      | message | Display Name cannot begin or end with a space |
+      | error   | ERROR                                         |

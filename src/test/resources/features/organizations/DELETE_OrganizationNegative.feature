@@ -1,4 +1,4 @@
-@functional
+@negative
 Feature: Organization Controller
 
   Background: Set authentication and create Organization
