@@ -8,24 +8,32 @@ Feature: List Controller
 
   @smoke
   Scenario: Update a List created
-    When I send a PUT request to "/lists/{list.id}" with the following parameters
-      | name       | Ready for QA |
-      | closed     | true         |
-      | pos        | bottom       |
-      | subscribed | true         |
+    When I send a PUT request to "/lists/{list.id}" with the following json body
+      """
+      {
+	    "name": "Ready for QAS",
+	    "closed": "true",
+	    "pos": "bottom",
+	    "subscribed": "true"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
-      | id      | {list.id}    |
-      | pos     | 65536        |
-      | name    | Ready for QA |
-      | closed  | true         |
-      | idBoard | {board.id}   |
+      | id      | {list.id}     |
+      | pos     | 65536         |
+      | name    | Ready for QAS |
+      | closed  | true          |
+      | idBoard | {board.id}    |
 
   @functional
   Scenario Outline: Update a List's name
-    When I send a PUT request to "/lists/{list.id}" with the following parameters
-      | name | <name_value> |
+    When I send a PUT request to "/lists/{list.id}" with the following json body
+      """
+      {
+	    "name": "<name_value>"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
@@ -35,14 +43,18 @@ Feature: List Controller
       | closed  | {list.closed} |
       | idBoard | {board.id}    |
     Examples:
-      | name_value      |
-      | Ready for merge |
-      | "%High Ground%" |
+      | name_value           |
+      | Ready for merge json |
+      | +%High Ground% json+ |
 
   @functional
   Scenario Outline: Update a List's archived status
-    When I send a PUT request to "/lists/{list.id}" with the following parameters
-      | closed | <closure> |
+    When I send a PUT request to "/lists/{list.id}" with the following json body
+      """
+      {
+	    "closed": "<closure>"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
@@ -60,8 +72,12 @@ Feature: List Controller
 
   @functional
   Scenario Outline: Update a List's position
-    When I send a PUT request to "/lists/{list.id}" with the following parameters
-      | pos | <position> |
+    When I send a PUT request to "/lists/{list.id}" with the following json body
+      """
+      {
+	    "pos": "<position>"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
@@ -74,13 +90,17 @@ Feature: List Controller
       | position | pos_expected |
       | top      | 4096         |
       | 2        | 2            |
-      | 40000    | 40000        |
+      | 4000     | 4000         |
       | bottom   | 65536        |
 
   @functional
   Scenario Outline: Update a List's subscribed field
-    When I send a PUT request to "/lists/{list.id}" with the following parameters
-      | subscribed | <sub_value> |
+    When I send a PUT request to "/lists/{list.id}" with the following json body
+      """
+      {
+	    "subscribed": "<sub_value>"
+      }
+      """
     And I send a GET request to "/lists/{list.id}" with the following parameters
       | fields | subscribed |
     Then I validate the response has status code 200
@@ -97,8 +117,12 @@ Feature: List Controller
 
   @smoke
   Scenario Outline: Archive (close) a List
-    When I send a PUT request to "/lists/{list.id}/closed" with the following parameters
-      | value | <close_value> |
+    When I send a PUT request to "/lists/{list.id}/closed" with the following json body
+      """
+      {
+	    "value": "<close_value>"
+      }
+      """
     Then I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
@@ -116,16 +140,20 @@ Feature: List Controller
 
   @functional
   Scenario Outline: Update a field on a List
-    When I send a PUT request to "/lists/{list.id}/<field>" with the following parameters
-      | value | <field_value> |
+    When I send a PUT request to "/lists/{list.id}/<field>" with the following json body
+      """
+      {
+	    "value": "<field_value>"
+      }
+      """
     Then I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
       | id      | {list.id}     |
       | <field> | <field_value> |
     Examples:
-      | field | field_value |
-      | name  | Review New  |
-      | name  | "Not Jedi"  |
-      | pos   | 40000       |
-      | pos   | 30000       |
+      | field | field_value     |
+      | name  | Review New json |
+      | name  | Not Jedi Master |
+      | pos   | 40000           |
+      | pos   | 30000           |
