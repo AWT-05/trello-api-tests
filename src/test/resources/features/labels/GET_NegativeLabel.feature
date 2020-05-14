@@ -24,9 +24,6 @@ Feature: Label Controller
       | 999999999999999999999999 |
       | ffffffffffffffffffffffff |
       | 00000000000000000000000f |
-#      | 11111111111111111111111A |
-#      | 00000000000000000000000000000000 |
-#      | 0000000000000000000000000000000A |
 
 
   Scenario Outline: No gets a label with invalid ids/
