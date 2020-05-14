@@ -61,32 +61,3 @@ Feature: List Controller
       | 1               |
       | all1            |
       | nonexistent     |
-
-  @negative
-  Scenario: Get a List without id
-    When I send a GET request to "/lists/{empty}"
-    Then I validate the response has status code 404
-
-  @negative
-  Scenario Outline: Get a List with non-acceptable id
-    When I send a GET request to "/lists/<value>"
-    Then I validate the response has status code 400
-    Examples:
-      | value                            |
-      | 1                                |
-      | amIAcceptedNow2                  |
-      | ()()                             |
-      | %&                               |
-      | qwertyuiop09876lkjhgfdsa12345zxc |
-      | 5eba06ca71gd2su1213j1jas         |
-
-  @negative
-  Scenario Outline: Get a List with non-existent id
-    When I send a GET request to "/lists/<value>"
-    Then I validate the response has status code 404
-    Examples:
-      | value                    |
-      | 000000000000ffffffffffff |
-      | 000000000000000000000000 |
-      | ffffffffffffffffffffffff |
-
