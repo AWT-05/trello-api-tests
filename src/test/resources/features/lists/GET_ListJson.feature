@@ -40,7 +40,7 @@ Feature: List Controller
 
   @functional
   Scenario: Get all fields of a List
-    When I send a GET request to "/lists/{list.id}" with the following parameters
+    When I send a GET request to "/lists/{list.id}" with the following json body
       """
       {
 	    "fields": "all"
@@ -57,7 +57,7 @@ Feature: List Controller
 
   @functional
   Scenario Outline: Get field(s) of a List with non-existent field value
-    When I send a GET request to "/lists/{list.id}" with the following parameters
+    When I send a GET request to "/lists/{list.id}" with the following json body
       """
       {
 	    "fields": "<field_non_value>"
@@ -70,6 +70,4 @@ Feature: List Controller
     Examples:
       | field_non_value |
       | {empty}         |
-      | 1               |
-      | all1            |
-      | nonexistent     |
+      | nonexistent            |

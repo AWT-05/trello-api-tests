@@ -17,12 +17,9 @@ Feature: List Controller
     Then I validate the response has status code 400
     Examples:
       | value                            |
-      | 1                                |
       | amIAcceptedNow2                  |
-      | ()()                             |
-      | %&                               |
+      | ()()123                          |
       | qwertyuiop09876lkjhgfdsa12345zxc |
-      | 5eba06ca71gd2su1213j1jas         |
 
   @negative
   Scenario Outline: Get a List with non-existent id
@@ -31,5 +28,4 @@ Feature: List Controller
     Examples:
       | value                    |
       | 000000000000ffffffffffff |
-      | 000000000000000000000000 |
-      | ffffffffffffffffffffffff |
+      | 5eba06ca7102332c34ce98fa |

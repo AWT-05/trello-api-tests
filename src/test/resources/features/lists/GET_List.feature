@@ -58,6 +58,4 @@ Feature: List Controller
     Examples:
       | field_non_value |
       | {empty}         |
-      | 1               |
       | all1            |
-      | nonexistent     |
