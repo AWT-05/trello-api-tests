@@ -20,7 +20,7 @@ Feature: Boards Controller
 
   @Smoke
   Scenario: Create a board with optional parameters using Json body
-    When I send a POST request to "/boards" with the following a Json body
+    When I send a POST request to "/boards" with the following json body
       """
       {
 	    "name" : "Hello New Board!",
