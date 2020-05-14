@@ -12,6 +12,7 @@ addons:
 script:
   - ./gradlew check
   - sonar-scanner
+  - ./gradlew executeBDDTests -PapiKey=$API_KEY -PapiToken=$API_TOKEN -PfilterTags=@functional
 
 notifications:
   email: true
