@@ -1,3 +1,4 @@
+@deleteBoard
 Feature: Board Controller
 
   Background: Set authentication and create a board

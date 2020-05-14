@@ -1,3 +1,4 @@
+@deleteBoard
 Feature: Board Controller
 
   Background: Set authentication and create a board
@@ -6,7 +7,7 @@ Feature: Board Controller
   Scenario: Create a board
     When I send a POST request to "/boards" with the following parameters
       | name | new_test_trello_api_board |
-    And I save response as "board"
+    And I save the id value to clean "board" workspace
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/getBoardSchema.json" JSON schema
     And I validate the response contains the following data
