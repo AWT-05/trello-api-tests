@@ -42,5 +42,3 @@ Feature: Label Controller
       | TestName | 3     | {board.id}               |
       | TestName | lima  | {empty}                  |
       | TestName | lima  | 000000000000000000000000 |
-
-

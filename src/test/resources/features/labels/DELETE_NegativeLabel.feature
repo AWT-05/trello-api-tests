@@ -51,4 +51,3 @@ Feature: Label Controller
       | 00000000000000000000000   |
       | zzzzzzzzzzzzzzzzzzzzzzzz  |
       | 9999999999999999999999999 |
-
