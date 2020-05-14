@@ -1,5 +1,5 @@
 @deleteBoard
-Feature: Boards Controller
+Feature: Board Controller
 
   Background: Authenticate user and set up a board
     Given I set authentication using API key and token
