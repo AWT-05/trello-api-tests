@@ -25,18 +25,20 @@ public final class Board {
      * Creates a new board with.
      */
     public void createNew() {
-        createNew("My test board");
+        createNew("New test board","The board's description","orange");
     }
 
     /**
-     * Creates a new board with a given name.
+     * Creates a new board with a given name, description and background.
      *
      * @param boardName value name for the board.
      */
-    public void createNew(final String boardName) {
+    public void createNew(final String boardName, final String boardDesc, final String boardPrefsBackground) {
         String board = BOARD.getValue();
         Map<String, String> body = new HashMap<>();
         body.put("name", boardName);
+        body.put("desc", boardDesc);
+        body.put("prefs_background", boardPrefsBackground);
 
         Response response = requestManager.init(context).queryParams(body).post(ENDPOINT);
         context.saveResponse(board, response);
