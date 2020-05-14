@@ -23,10 +23,10 @@ Feature: List Controller
       | pos     | <pos_expected>  |
       | idBoard | {board.id}      |
     Examples:
-      | pos_value | pos_expected | name_value       | name_expected    |
-      | top       | 8192         | Reviewed         | Reviewed         |
-      | bottom    | 65536        | With numbers 123 | With numbers 123 |
-      | 40000     | 40000        | ----             | ----             |
+      | pos_value | pos_expected | name_value                            | name_expected                         |
+      | top       | 8192         | Reviewed                              | Reviewed                              |
+      | bottom    | 65536        | With numbers 1234567890               | With numbers 1234567890               |
+      | 40000     | 40000        | With special chars <>!"#$%&/()=[]{}*+ | With special chars <>!"#$%&/()=[]{}*+ |
 
   @functional
   Scenario: Create a List copy of another List
