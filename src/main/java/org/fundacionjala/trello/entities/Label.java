@@ -26,7 +26,7 @@ public final class Label {
      * Creates a new label.
      */
     public void createNew() {
-        createNew("feature test", "sky");
+        createNew("feature", "sky");
     }
 
     /**
