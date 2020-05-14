@@ -11,7 +11,7 @@ Feature: List Controller
       | pos     | <pos>      |
       | idBoard | {board.id} |
     Then  I validate the response has status code 200
-#    And I validate the response body should match with "/lists/listSchema.json" JSON schema
+    And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
       | name    | Reviewed   |
       | closed  | false      |

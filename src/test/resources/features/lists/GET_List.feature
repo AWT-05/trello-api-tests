@@ -10,7 +10,7 @@ Feature: List Controller
   Scenario: Get a List
     When I send a GET request to "/lists/{list.id}"
     Then I validate the response has status code 200
-    And I validate the response body should match with "/lists/listGetSchema.json" JSON schema
+    And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
       | id      | {list.id}     |
       | name    | {list.name}   |
