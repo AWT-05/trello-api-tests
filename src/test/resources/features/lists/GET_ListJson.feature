@@ -70,4 +70,4 @@ Feature: List Controller
     Examples:
       | field_non_value |
       | {empty}         |
-      | nonexistent            |
+      | nonexistent     |
