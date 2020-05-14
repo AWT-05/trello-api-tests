@@ -11,7 +11,6 @@ Feature: Boards Controller
       | name             | Board name updated           |
       | desc             | Description has been updated |
       | prefs/background | lime                         |
-
     Then I validate the response has status code 200
     And I validate the response body should match with "/boards/putBoardSchema.json" JSON schema
     And I validate the response contains the following data

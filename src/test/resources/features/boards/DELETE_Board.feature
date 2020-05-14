@@ -35,5 +35,3 @@ Feature: Boards Controller
       | 12345679asdfqwerWERSDFAA      |
       | aaaaaaaaaaaaaaaaaaa           |
       | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
-
-
