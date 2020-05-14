@@ -41,8 +41,7 @@ public class RequestSteps {
     }
 
     /**
-     * Sets authentication header to base request specification,
-     * Only with API key
+     * Sets authentication only with API key.
      */
     @Given("I set authentication using only an API key")
     public void setAuthenticationAPIKey() {
@@ -51,8 +50,7 @@ public class RequestSteps {
     }
 
     /**
-     * Sets authentication header to base request specification,
-     * Only with API key
+     * Sets authentication only with API key.
      */
     @Given("I set authentication using only a Token")
     public void setAuthenticationToken() {
@@ -171,6 +169,12 @@ public class RequestSteps {
         context.setResponse(response);
     }
 
+    /**
+     * Sends GET request with json body.
+     *
+     * @param endpoint resource endpoint.
+     * @param body     request json body.
+     */
     @When("I send a GET request to {string} with the following json body")
     public void iSendAGETRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).get(endpoint);

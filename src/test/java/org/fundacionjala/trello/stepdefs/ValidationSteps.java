@@ -59,12 +59,22 @@ public class ValidationSteps {
         JsonSchemaUtils.verifyResponseData(context.getResponse(), context.getResponses(), data);
     }
 
+    /**
+     * Validates that response contains expected text content.
+     *
+     * @param content expected data.
+     */
     @Then("I validate the response contains the following value")
     public void validateResponseContains(final String content) {
         String actualContent = context.getResponse().body().asString();
         assertEquals(actualContent, content, NO_EQUALS_ERROR_MESSAGE);
     }
 
+    /**
+     * Validates that response contains expected json content.
+     *
+     * @param content expected data.
+     */
     @Then("I validate the response contains the following json")
     public void validateResponseContainsJson(final String content) {
         String contentCleaned = content
