@@ -7,18 +7,18 @@ Feature: List Controller
   @deleteBoard
   Scenario Outline: Create a List
     When I send a POST request to "/lists" with the following parameters
-      | name    | Reviewed   |
-      | pos     | <pos>      |
-      | idBoard | {board.id} |
+      | name    | <name_value> |
+      | pos     | <pos_value>  |
+      | idBoard | {board.id}   |
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
-      | name    | Reviewed   |
-      | closed  | false      |
-      | pos     | <expected> |
-      | idBoard | {board.id} |
+      | name    | <name_expected> |
+      | closed  | false           |
+      | pos     | <pos_expected>  |
+      | idBoard | {board.id}      |
     Examples:
-      | pos    | expected |
-      | top    | 8192     |
-      | bottom | 65536    |
-      | 40000  | 40000    |
+      | pos_value | pos_expected | name_value       | name_expected    |
+      | top       | 8192         | Reviewed         | Reviewed         |
+      | bottom    | 65536        | With numbers 123 | With numbers 123 |
+      | 40000     | 40000        | ----             | ----             |
