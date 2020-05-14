@@ -50,7 +50,7 @@ public class RequestSteps {
     }
 
     /**
-     * Sets authentication only with API key.
+     * Sets authentication only with Token.
      */
     @Given("I set authentication using only a Token")
     public void setAuthenticationToken() {
@@ -73,7 +73,7 @@ public class RequestSteps {
      * @param endpoint resource endpoint.
      */
     @When("I send a GET request to {string}")
-    public void sendGETRequestWithParameters(final String endpoint) {
+    public void sendGETRequest(final String endpoint) {
         response = requestManager.init(context).get(endpoint);
         context.setResponse(response);
     }
@@ -85,7 +85,7 @@ public class RequestSteps {
      * @param params   request parameters.
      */
     @When("I send a GET request to {string} with the following parameters")
-    public void iSendAGETRequestToWithTheFollowingParameters(final String endpoint, final Map<String, String> params) {
+    public void sendGETRequestWithParameters(final String endpoint, final Map<String, String> params) {
         response = requestManager.init(context).queryParams(params).get(endpoint);
         context.setResponse(response);
     }
@@ -176,7 +176,7 @@ public class RequestSteps {
      * @param body     request json body.
      */
     @When("I send a GET request to {string} with the following json body")
-    public void iSendAGETRequestToWithTheFollowingJsonBody(final String endpoint, final String body) {
+    public void sendGETRequestWithJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).get(endpoint);
         context.setResponse(response);
     }
