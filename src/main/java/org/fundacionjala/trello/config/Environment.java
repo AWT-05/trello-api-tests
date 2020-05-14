@@ -21,14 +21,14 @@ public final class Environment {
     private static final String API_KEY = "apiKey";
     private static final String API_TOKEN = "apiToken";
     private static final String VERSION = "version";
-    private static final String THREAD_COUNT = "threadCount";
+    private static final String THREAD_COUNT = "cucumberThreadCount";
     private static final String PROPERTIES_FILE_PATH = "gradle.properties";
     private static Environment instance;
     private Properties properties;
 
     /**
      * Configures the environment properties from gradle.properties.
-     * Initializes instance of PropertiesUtils class.
+     * Initializes an instance of PropertiesUtils class.
      */
     private Environment() {
         try (FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)) {
