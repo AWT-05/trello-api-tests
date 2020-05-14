@@ -55,3 +55,15 @@ Feature: Organization Controller
       | name        | new_organization_test_unique23       |
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
+
+  @deleteOrganization
+  Scenario: Create an Organization with unique parameter using min length
+    When I send a POST request to "/organizations" with the following parameters
+      | displayName | New organization test |
+      | name        | y9b                   |
+    And I save the id value to clean "organization" workspace
+    Then I validate the response has status code 200
+    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response contains the following data
+      | displayName | New organization test |
+      | name        | y9b                   |
