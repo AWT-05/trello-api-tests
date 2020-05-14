@@ -25,13 +25,15 @@ public final class Board {
      * Creates a new board with.
      */
     public void createNew() {
-        createNew("New test board","The board's description","orange");
+        createNew("New test board", "The board's description", "orange");
     }
 
     /**
      * Creates a new board with a given name, description and background.
      *
-     * @param boardName value name for the board.
+     * @param boardName            value name for the board.
+     * @param boardDesc            value description for the board.
+     * @param boardPrefsBackground value color of background for the board.
      */
     public void createNew(final String boardName, final String boardDesc, final String boardPrefsBackground) {
         String board = BOARD.getValue();
