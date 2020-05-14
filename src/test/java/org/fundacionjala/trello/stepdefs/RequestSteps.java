@@ -55,8 +55,20 @@ public class RequestSteps {
      * @param endpoint resource endpoint.
      */
     @When("I send a GET request to {string}")
-    public void sendGETRequestWithParameters(final String endpoint) {
+    public void sendGETRequest(final String endpoint) {
         response = requestManager.init(context).get(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
+     * Sends GET request with parameters.
+     *
+     * @param endpoint resource endpoint.
+     * @param params request parameters.
+     */
+    @When("I send a GET request to {string} with the following parameters")
+    public void sendGETRequestWithParameters(final String endpoint, final Map<String, String> params) {
+        response = requestManager.init(context).queryParams(params).get(endpoint);
         context.setResponse(response);
     }
 
