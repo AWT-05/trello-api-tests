@@ -6,7 +6,7 @@ Feature: List Controller
     And I have a board created
 
   @negative
-  Scenario: Create a List without valid name
+  Scenario: Create a List with invalid name
     When I send a POST request to "/lists" with the following parameters
       | name    | {empty}    |
       | pos     | top        |
@@ -14,7 +14,15 @@ Feature: List Controller
     Then  I validate the response has status code 400
 
   @negative
-  Scenario Outline: Create a List without valid idBoard
+  Scenario: Create a List with empty idBoard
+    When I send a POST request to "/lists" with the following parameters
+      | name    | Normal Name |
+      | pos     | top         |
+      | idBoard | {empty}     |
+    Then  I validate the response has status code 400
+
+  @negative
+  Scenario Outline: Create a List with invalid idBoard
     When I send a POST request to "/lists" with the following parameters
       | name    | Normal Name    |
       | pos     | top            |
@@ -22,7 +30,5 @@ Feature: List Controller
     Then  I validate the response has status code 400
     Examples:
       | non-existent              |
-      | {empty}                   |
       | $#                        |
-      | 00000000000ffffffffffff   |
       | 000000000000fffffffffffff |

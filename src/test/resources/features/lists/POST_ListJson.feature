@@ -23,10 +23,10 @@ Feature: List Controller
       | pos     | <pos_expected>  |
       | idBoard | {board.id}      |
     Examples:
-      | pos_value | pos_expected | name_value                             | name_expected                          |
-      | top       | 8192         | Reviewed 2                             | Reviewed 2                             |
-      | bottom    | 65536        | With numbers 123456789                 | With numbers 123456789                 |
-      | 40000     | 40000        | With special chars <>!"#$%&/()=[]{}*+- | With special chars <>!"#$%&/()=[]{}*+- |
+      | pos_value | pos_expected | name_value                            | name_expected                         |
+      | top       | 8192         | Reviewed 2                            | Reviewed 2                            |
+      | bottom    | 65536        | With numbers 123456789                | With numbers 123456789                |
+      | 40000     | 40000        | With special chars <>!#$%&/()=[]{}*+- | With special chars <>!#$%&/()=[]{}*+- |
 
   @functional
   Scenario: Create a List copy of another List
@@ -34,7 +34,7 @@ Feature: List Controller
     When I send a POST request to "/lists" with the following json body
       """
       {
-	    "name": "Reviewed copy",
+	    "name": "Reviewed copy json",
 	    "idBoard": "{board.id}",
 	    "idListSource": "{list.id}"
       }
