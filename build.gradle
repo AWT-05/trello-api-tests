@@ -58,6 +58,7 @@ task executeBDDTests(type: Test) {
         jvmArgs = ['-Dcucumber.execution.strict=' + true]
         jvmArgs = ['-Dcucumber.plugin=io.qameta.allure.cucumber5jvm.AllureCucumber5Jvm']
         jvmArgs = ['-Dcucumber.filter.tags=' + filterTags]
+        jvmArgs = ['-DcucumberThreadCount=' + cucumberThreadCount]
     }
     // Flag to show console output.
     testLogging.showStandardStreams = true
