@@ -48,6 +48,6 @@ Feature: Boards Controller
       """
     And I save the id value to clean "board" workspace
     Then I validate the response has status code 400
-    And I validate the response body should match with "boards/boardSchema.json" JSON schema
-    And I validate the response contains the following data
-      | name | Hello Board4! |
+#    And I validate the response body should match with "boards/boardSchema.json" JSON schema
+#    And I validate the response contains the following data
+#      | name | Hello Board4! |
