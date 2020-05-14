@@ -31,12 +31,6 @@ Feature: Boards Controller
       | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 
   @negative
-  Scenario: Try to get a board without an id
-    When I send a GET request to "/boards/{empty}"
-    Then I validate the response has status code 404
-
-
-  @negative
   Scenario Outline: Try to get a board without an existing id
     When I send a GET request to "/boards/<value>"
     Then I validate the response has status code 404
