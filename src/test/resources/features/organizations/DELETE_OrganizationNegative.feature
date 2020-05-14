@@ -3,7 +3,6 @@ Feature: Organization Controller
 
   Background: Set authentication and create Organization
     Given I set authentication using API key and token
-    And I have an organization created
 
   Scenario Outline: Delete organization with incorrect id
     When I send a DELETE request to "/organizations/<organization.id>"

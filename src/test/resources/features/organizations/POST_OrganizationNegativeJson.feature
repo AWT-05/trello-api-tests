@@ -14,7 +14,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | <Display Name parameter> |
     Examples:
@@ -65,7 +65,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test |
       | desc        | <Description>         |
@@ -89,7 +89,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test |
       | website     | http://<Website>      |
@@ -114,7 +114,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     Examples:
       | Organization name                          |
       | EVALUATIN UPPERCASE format                 |

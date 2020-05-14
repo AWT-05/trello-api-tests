@@ -14,7 +14,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated |
 
@@ -28,7 +28,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                    |
       | desc        | Description of updated organization test |
@@ -43,7 +43,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test              |
       | name        | unique_organization_test_updated23 |
@@ -60,7 +60,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated                |
       | name        | unique_organization_test_updated23       |
@@ -76,7 +76,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated |
 
@@ -90,7 +90,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                    |
       | desc        | Description of updated organization test |
@@ -101,14 +101,14 @@ Feature: Organization Controller
     When I send a PUT request to "/organizations/{organization.name}" with the following json body
       """
       {
-	    "name" : "unique_organization_test_updated23"
+	    "name" : "unique_test_updated12"
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
-      | displayName | New organization test              |
-      | name        | unique_organization_test_updated23 |
+      | displayName | New organization test |
+      | name        | unique_test_updated12 |
 
   @deleteOrganization
   Scenario: Update all allowed parameters in the Organization using Json body and name as path parameter
@@ -122,7 +122,7 @@ Feature: Organization Controller
       }
       """
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated                |
       | name        | unique_organization_test_updated23       |

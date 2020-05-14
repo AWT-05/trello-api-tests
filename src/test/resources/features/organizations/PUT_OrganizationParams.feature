@@ -10,7 +10,7 @@ Feature: Organization Controller
     When I send a PUT request to "/organizations/{organization.id}" with the following parameters
       | displayName | organization test updated |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated |
 
@@ -20,7 +20,7 @@ Feature: Organization Controller
       | desc    | Description of new organization test |
       | website | fundacion-jala.org                   |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                |
       | desc        | Description of new organization test |
@@ -31,7 +31,7 @@ Feature: Organization Controller
     When I send a PUT request to "/organizations/{organization.id}" with the following parameters
       | name | unique_organization_test_updated23 |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test              |
       | name        | unique_organization_test_updated23 |
@@ -40,14 +40,14 @@ Feature: Organization Controller
   Scenario: Update all allowed parameters in the Organization
     When I send a PUT request to "/organizations/{organization.id}" with the following parameters
       | displayName | organization test updated            |
-      | name        | unique_organization_test_updated23   |
+      | name        | uniqu_org_test_updated23             |
       | desc        | Description of new organization test |
       | website     | fundacion-jala.org                   |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated            |
-      | name        | unique_organization_test_updated23   |
+      | name        | uniqu_org_test_updated23             |
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
 
@@ -56,7 +56,7 @@ Feature: Organization Controller
     When I send a PUT request to "/organizations/{organization.name}" with the following parameters
       | displayName | organization test updated |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated |
 
@@ -66,7 +66,7 @@ Feature: Organization Controller
       | desc    | Description of new organization test |
       | website | fundacion-jala.org                   |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                |
       | desc        | Description of new organization test |
@@ -77,7 +77,7 @@ Feature: Organization Controller
     When I send a PUT request to "/organizations/{organization.name}" with the following parameters
       | name | unique_organization_test_updated23 |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test              |
       | name        | unique_organization_test_updated23 |
@@ -86,13 +86,13 @@ Feature: Organization Controller
   Scenario: Update all allowed parameters in the Organization using name as path parameter
     When I send a PUT request to "/organizations/{organization.name}" with the following parameters
       | displayName | organization test updated            |
-      | name        | unique_organization_test_updated23   |
+      | name        | unique_organization_updated23        |
       | desc        | Description of new organization test |
       | website     | fundacion-jala.org                   |
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationGetSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated            |
-      | name        | unique_organization_test_updated23   |
+      | name        | unique_organization_updated23        |
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |

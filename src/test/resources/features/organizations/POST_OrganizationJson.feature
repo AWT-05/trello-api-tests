@@ -14,7 +14,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test |
 
@@ -30,7 +30,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                |
       | desc        | Description of new organization test |
@@ -42,15 +42,15 @@ Feature: Organization Controller
       """
       {
 	    "displayName" : "New organization test",
-	    "name" : "new_organization_test_unique23"
+	    "name" : "new_organization_test_unique271"
       }
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
-      | displayName | New organization test          |
-      | name        | new_organization_test_unique23 |
+      | displayName | New organization test           |
+      | name        | new_organization_test_unique271 |
 
   @deleteOrganization
   Scenario: Create an Organization using Json body with all allowed parameters
@@ -58,17 +58,17 @@ Feature: Organization Controller
       """
       {
 	    "displayName" : "New organization test",
-	    "name" : "new_organization_test_unique23",
+	    "name" : "organization_tests_unique23",
 	    "desc" : "Description of new organization test",
 	    "website" : "fundacion-jala.org"
       }
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test                |
-      | name        | new_organization_test_unique23       |
+      | name        | organization_tests_unique23          |
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
 
@@ -83,7 +83,7 @@ Feature: Organization Controller
       """
     And I save the id value to clean "organization" workspace
     Then I validate the response has status code 200
-    And I validate the response body should match with "organizations/organizationSchema.json" JSON schema
+    And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | New organization test |
       | name        | y9b                   |
