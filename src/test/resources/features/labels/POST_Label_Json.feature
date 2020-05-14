@@ -6,12 +6,16 @@ Feature: Label Controller
     And I have a board created
 
   @functional
-  Scenario Outline: Create a Label with query params
+  Scenario Outline: Create a Label
 
-    When I send a POST request to "/labels" with the following parameters
-      | name    | <Name>     |
-      | color   | <Color>    |
-      | idBoard | {board.id} |
+    When I send a POST request to "/labels" with the following json body
+    """
+      {
+        "name" : "<Name>",
+        "color" : "<Color>",
+        "idBoard": "{board.id}"
+      }
+    """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/labels/labelSchema.json" JSON schema
     And I validate the response contains the following data
@@ -27,12 +31,16 @@ Feature: Label Controller
       | 123      | sky    |
 
 
-  Scenario Outline: Created with the "color" field empty or null with query params
+  Scenario Outline: Created with the "color" field empty or null
 
-    When I send a POST request to "/labels" with the following parameters
-      | name    | Test feature |
-      | color   | <Input>      |
-      | idBoard | {board.id}   |
+    When I send a POST request to "/labels" with the following json body
+    """
+      {
+        "name" : "Test feature",
+        "color" : "<Input>",
+        "idBoard": "{board.id}"
+      }
+    """
     Then  I validate the response has status code 200
     And I save response as "label"
     And I validate the response body should match with "/labels/labelSchema.json" JSON schema
@@ -54,11 +62,15 @@ Feature: Label Controller
 #      | {null}  |
 
   @smoke
-  Scenario: Created without the "color" field with query params
+  Scenario: Created without the "color" field
 
-    When I send a POST request to "/labels" with the following parameters
-      | name    | Test feature |
-      | idBoard | {board.id}   |
+    When I send a POST request to "/labels" with the following json body
+    """
+      {
+        "name" : "Test feature",
+        "idBoard": "{board.id}"
+      }
+    """
     Then  I validate the response has status code 200
     And I save response as "label"
     And I validate the response body should match with "/labels/labelSchema.json" JSON schema

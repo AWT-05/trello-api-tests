@@ -3,6 +3,7 @@ package org.fundacionjala.trello.stepdefs;
 import io.cucumber.java.en.Then;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.JsonSchemaUtils;
+import org.fundacionjala.trello.utils.Mapper;
 
 import java.util.Map;
 
@@ -60,17 +61,19 @@ public class ValidationSteps {
 
     @Then("I validate the response contains the following value")
     public void validateResponseContains(final String content) {
-        String actualContent = context.getResponse().body().asString()
-                .replace(" ", "");
+        String actualContent = context.getResponse().body().asString();
         assertEquals(actualContent, content, NO_EQUALS_ERROR_MESSAGE);
     }
 
     @Then("I validate the response contains the following json")
-    public void iValidateTheResponseContainsTheFollowingJson(final String content) {
-        String expectedContent = content
+    public void validateResponseContainsJson(final String content) {
+        String contentCleaned = content
                 .replace("\n", "")
                 .replace("\r", "")
                 .replace(" ", "");
-        validateResponseContains(expectedContent);
+        String expectedContent = Mapper.replaceData(contentCleaned, context.getResponses());
+        String actualContent = context.getResponse().body().asString()
+                .replace(" ", "");
+        assertEquals(actualContent, expectedContent, NO_EQUALS_ERROR_MESSAGE);
     }
 }
