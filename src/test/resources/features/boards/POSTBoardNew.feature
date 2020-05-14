@@ -24,7 +24,8 @@ Feature: Boards Controller
       """
       {
 	    "name" : "Hello Board5!",
-	    "desc" : "This is the description for the new board created."
+	    "desc" : "This is the description for the new board created.",
+	    "prefs_background" : "green"
       }
       """
 #    see to send whitn invalid patters (see documentation for this) changed Pups and background
@@ -35,5 +36,22 @@ Feature: Boards Controller
     And I validate the response contains the following data
       | name             | Hello Board5!                                      |
       | desc             | This is the description for the new board created. |
+      | prefs.background | green                                              |
+
+
+
 #      | prefs_background | green                                              |
 
+  @negative @deleteBoard
+  Scenario: Create a board using Json body with wrong required parameters
+    When I send a POST request to "/boards" with the following json body
+      """
+      {
+	    "namew" : "Hello Board4!"
+      }
+      """
+    And I save the id value to clean "board" workspace
+    Then I validate the response has status code 200
+    And I validate the response body should match with "boards/boardSchema.json" JSON schema
+    And I validate the response contains the following data
+      | name | Hello Board4! |
