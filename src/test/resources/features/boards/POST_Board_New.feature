@@ -5,7 +5,7 @@ Feature: Boards Controller
     Given I set authentication using API key and token
 
   @functional @deleteBoard
-  Scenario: Create a board using Json body with just basic required parameters
+  Scenario: Create a board with just basic required parameters using a Json body
     When I send a POST request to "/boards" with the following json body
       """
       {
@@ -19,8 +19,8 @@ Feature: Boards Controller
       | name | Hello New Board! |
 
   @deleteBoard
-  Scenario: Create a board using Json body with optional parameters
-    When I send a POST request to "/boards" with the following json body
+  Scenario: Create a board with optional parameters using Json body
+    When I send a POST request to "/boards" with the following a Json body
       """
       {
 	    "name" : "Hello New Board!",
@@ -39,16 +39,17 @@ Feature: Boards Controller
       | prefs.background | green                                              |
 
   @negative @deleteBoard
-  Scenario: Create a board using Json body with invalid required parameters
+  Scenario: Create a board with invalid required parameters using a Json body
     When I send a POST request to "/boards" with the following json body
       """
       {
 	    "namew" : "Hello Board 32"
       }
       """
-    And I save the id value to clean "board" workspace
+
     Then I validate the response has status code 400
-#    And I validate the response body should match with "boards/boardSchema.json" JSON schema
+
+  #    And I validate the response body should match with "boards/boardSchema.json" JSON schema
 #    And I validate the response contains the following data
 #      | name | Hello Board4! |#
 #  Validate a negative sending empty

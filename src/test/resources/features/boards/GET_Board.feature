@@ -1,7 +1,7 @@
 @Smoke  @deleteBoard
 Feature: Boards Controller
 
-  Background: authenticate user and set up a board
+  Background: Authenticate user and set up a board
     Given I set authentication using API key and token
     And I have a board created
 
@@ -17,7 +17,7 @@ Feature: Boards Controller
       | prefs.background | {board.prefs.background} |
 
   @negative
-  Scenario Outline: Get a List with an invalid id
+  Scenario Outline: Try to get a board with an invalid id
     When I send a GET request to "/boards/<value>"
     Then I validate the response has status code 400
     Examples:
@@ -28,6 +28,6 @@ Feature: Boards Controller
       | 12345679asdfqwerrtuyhgzxcv |
 
   @negative
-  Scenario: Get a List without id
+  Scenario: Try to get a board without an id
     When I send a GET request to "/boards/{empty}"
     Then I validate the response has status code 404
