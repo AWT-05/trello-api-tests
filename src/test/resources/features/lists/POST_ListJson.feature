@@ -7,10 +7,14 @@ Feature: List Controller
 
   @smoke
   Scenario Outline: Create a List
-    When I send a POST request to "/lists" with the following parameters
-      | name    | <name_value> |
-      | pos     | <pos_value>  |
-      | idBoard | {board.id}   |
+    When I send a POST request to "/lists" with the following json body
+      """
+      {
+	    "name": "<name_value>",
+	    "pos": "<pos_value>",
+	    "idBoard": "{board.id}"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
@@ -27,10 +31,14 @@ Feature: List Controller
   @functional
   Scenario: Create a List copy of another List
     Given I have a list created
-    When I send a POST request to "/lists" with the following parameters
-      | name         | Reviewed copy |
-      | idListSource | {list.id}     |
-      | idBoard      | {board.id}    |
+    When I send a POST request to "/lists" with the following json body
+      """
+      {
+	    "name": "Reviewed copy",
+	    "idBoard": "{board.id}",
+	    "idListSource": "{list.id}"
+      }
+      """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/lists/listSchema.json" JSON schema
     And I validate the response contains the following data
