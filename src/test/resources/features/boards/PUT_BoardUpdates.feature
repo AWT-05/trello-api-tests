@@ -19,7 +19,7 @@ Feature: Boards Controller
       | desc             | Description has been updated |
       | prefs.background | lime                         |
 
-  @negative
+  @negative @Smoke
   Scenario: Update a created board with invalid parameters
     When I send a PUT request to "/boards/{board.id}" with the following parameters
       | nameddddddddd    | Board name updated           |
@@ -28,7 +28,7 @@ Feature: Boards Controller
     Then I validate the response has status code 400
 
   @negative
-  Scenario Outline: Update a Board with an invalid id
+  Scenario Outline: Update a board with invalid ids
     When I send a PUT request to "/boards/<value>" with the following parameters
       | name             | Board name updated           |
       | desc             | Description has been updated |
