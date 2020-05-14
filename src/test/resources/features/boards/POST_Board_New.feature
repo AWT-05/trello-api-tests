@@ -34,20 +34,22 @@ Feature: Boards Controller
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/boardSchema.json" JSON schema
     And I validate the response contains the following data
-      | name             | Hello New Board!                           |
+      | name             | Hello New Board!                                   |
       | desc             | This is the description for the new board created. |
       | prefs.background | green                                              |
 
   @negative @deleteBoard
-  Scenario: Create a board using Json body with wrong required parameters
+  Scenario: Create a board using Json body with invalid required parameters
     When I send a POST request to "/boards" with the following json body
       """
       {
-	    "namew" : "Hello Board4!"
+	    "namew" : "Hello Board 32"
       }
       """
     And I save the id value to clean "board" workspace
     Then I validate the response has status code 400
 #    And I validate the response body should match with "boards/boardSchema.json" JSON schema
 #    And I validate the response contains the following data
-#      | name | Hello Board4! |
+#      | name | Hello Board4! |#
+#  Validate a negative sending empty
+#  invalid http methods?
