@@ -18,10 +18,10 @@ Feature: Board Controller
     Then I validate the response has status code 200
     And I validate the response body should match with "/boards/putBoardSchema.json" JSON schema
     And I validate the response contains the following data
-      | id               | {board.id}                               |
-      | name             | Board name updated                       |
+      | id               | {board.id}                                |
+      | name             | Board name updated                        |
       | desc             | Description has been updated using a Json |
-      | prefs.background | lime                                     |
+      | prefs.background | lime                                      |
 
   @negative @Smoke
   Scenario: Update a created board with invalid parameters in a Json body

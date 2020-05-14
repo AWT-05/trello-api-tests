@@ -100,9 +100,3 @@ Feature: Board Controller
       | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
       | 99999999999999999  | 99999999999999999  |
       | abcdef12.0abcdeffF | abcdef12.0abcdeffF |
-
-
-#    see to send whitn invalid patters (see documentation for this) changed Pups and background
-#    And I validate the response body should match with "boards/boardSchema.json" JSON schema
-#    And I validate the response contains the following data
-#      | name | Hello Board4! |#

@@ -18,7 +18,6 @@ Feature: Board Controller
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/getBoardSchema.json" JSON schema
 
-
   Scenario: Delete board created
     When I send a DELETE request to "/boards/{board.id}"
     Then I validate the response has status code 200
