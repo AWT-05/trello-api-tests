@@ -5,7 +5,7 @@ Feature: List Controller
     Given I set authentication using API key and token
     And I have a board created
 
-  @smoke
+  @smoke @functional
   Scenario Outline: Create a List
     When I send a POST request to "/lists" with the following parameters
       | name    | <name_value> |

@@ -6,7 +6,7 @@ Feature: List Controller
     And I have a board created
     And I have a list created
 
-  @smoke
+  @smoke @functional
   Scenario: Update a List created
     When I send a PUT request to "/lists/{list.id}" with the following json body
       """

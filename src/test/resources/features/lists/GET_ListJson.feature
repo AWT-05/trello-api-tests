@@ -6,7 +6,7 @@ Feature: List Controller
     And I have a board created
     And I have a list created
 
-  @smoke
+  @smoke @functional
   Scenario: Get a List
     When I send a GET request to "/lists/{list.id}"
     Then I validate the response has status code 200
