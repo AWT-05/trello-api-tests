@@ -40,7 +40,7 @@ public class CommonHooks {
     /**
      * Skips a test scenario.
      */
-    @Before(value= "@skipScenario", order = SKIP_HOOK_ORDER_VALUE)
+    @Before(value = "@skipScenario", order = SKIP_HOOK_ORDER_VALUE)
     public void skipTestScenario() {
         throw new SkipException(TEST_SKIPPED_MSG);
     }
