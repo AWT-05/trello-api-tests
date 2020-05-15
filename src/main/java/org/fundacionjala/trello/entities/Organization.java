@@ -27,7 +27,7 @@ public class Organization {
      * Creates a new organization.
      */
     public void createNew() {
-        createNew("New organization test", "new_org_unique_name23");
+        createNew("New organization test", "unique_name23");
     }
 
     /**

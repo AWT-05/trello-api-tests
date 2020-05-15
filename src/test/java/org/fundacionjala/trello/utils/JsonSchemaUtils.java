@@ -1,6 +1,9 @@
 package org.fundacionjala.trello.utils;
 
 import io.restassured.response.Response;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.File;
 import java.util.Map;
@@ -44,5 +47,22 @@ public final class JsonSchemaUtils {
             assertEquals(response.jsonPath().getString(key), expectedData.get(key),
                     String.format(DATA_MATCH_ERROR_MSG, key));
         }
+    }
+
+    /**
+     * Converts a Json string to map.
+     *
+     * @param content json data string.
+     * @return Map of strings.
+     */
+    public static Map<String, String> convertToMap(final String content) {
+        JSONParser parser = new JSONParser();
+        JSONObject json = new JSONObject();
+        try {
+            json = (JSONObject) parser.parse(content);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 }
