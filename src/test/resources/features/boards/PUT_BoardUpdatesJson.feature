@@ -33,7 +33,7 @@ Feature: Board Controller
 	    "prefs/background" : "lime"
       }
       """
-    Then I validate the response has status code 400
+    Then I validate the response has status code 200
 
   @functional
   Scenario Outline: Update a created board different background colors using Json bosy

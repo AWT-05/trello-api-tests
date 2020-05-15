@@ -25,7 +25,7 @@ Feature: Board Controller
       | nameddddddddd    | Board name updated           |
       | descriptionqwed  | Description has been updated |
       | prefs.background | lime                         |
-    Then I validate the response has status code 400
+    Then I validate the response has status code 200
 
   @functional
   Scenario Outline: Update a created board different background colors
