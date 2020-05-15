@@ -95,14 +95,12 @@ Feature: Board Controller
     Examples:
       | value                         |
       | gggggggggggggggggggggggg      |
-      | GGGGGGGGGGGGGGGGGGGGGGGG      |
       | $$$$$$$$$$$$$$$$$$$$$$$$      |
       | aaaaaaaaaaaaaaaaaaa           |
-      | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 
   @negative
-  Scenario Outline: Update a board with empty ids using a Json body
-    When I send a PUT request to "/boards/<value>" with the following json body
+  Scenario: Update a board with empty ids using a Json body
+    When I send a PUT request to "/boards/{empty}" with the following json body
       """
       {
 	    "name" : "Board name updated",
@@ -111,10 +109,6 @@ Feature: Board Controller
       }
       """
     Then I validate the response has status code 404
-    Examples:
-      | value   |
-      | {empty} |
-      |         |
 
   @negative @skipScenario
   Scenario Outline: Update a board without an existing id using a Json body

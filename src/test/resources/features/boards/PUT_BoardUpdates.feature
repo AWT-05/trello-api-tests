@@ -75,22 +75,16 @@ Feature: Board Controller
     Examples:
       | value                         |
       | gggggggggggggggggggggggg      |
-      | GGGGGGGGGGGGGGGGGGGGGGGG      |
       | $$$$$$$$$$$$$$$$$$$$$$$$      |
       | aaaaaaaaaaaaaaaaaaa           |
-      | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
 
   @negative
-  Scenario Outline: Update a board with empty ids
-    When I send a PUT request to "/boards/<value>" with the following parameters
+  Scenario: Update a board with empty id
+    When I send a PUT request to "/boards/{empty}" with the following parameters
       | name             | Board name updated           |
       | desc             | Description has been updated |
       | prefs/background | lime                         |
     Then I validate the response has status code 404
-    Examples:
-      | value   |
-      | {empty} |
-      |         |
 
   @negative @skipScenario
   Scenario Outline: Update a board without an existing id

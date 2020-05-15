@@ -93,15 +93,11 @@ Feature: Board Controller
     Then I validate the response has status code 400
 
   @negative
-  Scenario Outline: Create a board with basic required parameter with special chars
+  Scenario: Create a board with basic required parameter with special chars
     When I send a POST request to "/boards" with the following parameters
-      | name | <value> |
+      | name | 5ebcf20b25ab832271a56fb%$|
     And I save the id value to clean "board" workspace
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/boardSchema.json" JSON schema
     And I validate the response contains the following data
-      | name | <name> |
-    Examples:
-      | value                     | name                      |
-      | 5ebcf20b25ab832271a56fb%$ | 5ebcf20b25ab832271a56fb%$ |
-      | $$$$$$$$$$$$$$$$$$$$$$$$$ | $$$$$$$$$$$$$$$$$$$$$$$$$ |
+      | name |5ebcf20b25ab832271a56fb%$|

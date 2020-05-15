@@ -11,13 +11,9 @@ Feature: Board Controller
     Then I validate the response has status code 200
 
   @negative
-  Scenario Outline: Delete a board with an empty id
-    When I send a DELETE request to "/boards/<value>"
+  Scenario: Delete a board with an empty id
+    When I send a DELETE request to "/boards/{empty}"
     Then I validate the response has status code 404
-    Examples:
-      | value   |
-      | {empty} |
-      |         |
 
   @negative @skipScenario
   Scenario Outline: Delete a board without an existing id
@@ -35,7 +31,5 @@ Feature: Board Controller
     Examples:
       | value                         |
       | gggggggggggggggggggggggg      |
-      | GGGGGGGGGGGGGGGGGGGGGGGG      |
       | $$$$$$$$$$$$$$$$$$$$$$$$      |
       | aaaaaaaaaaaaaaaaaaa           |
-      | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
