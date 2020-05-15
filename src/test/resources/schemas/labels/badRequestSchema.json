@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "examples": [
+    {
+      "message": "Invalid id",
+      "error": "ERROR"
+    }
+  ],
+  "required": [
+    "message",
+    "error"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "message": {
+      "type": "string",
+      "examples": [
+        "Invalid id"
+      ]
+    },
+    "error": {
+      "type": "string",
+      "examples": [
+        "ERROR"
+      ]
+    }
+  }
+}

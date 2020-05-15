@@ -35,8 +35,26 @@ public class RequestSteps {
      * Sets authentication header to base request specification.
      */
     @Given("I set authentication using API key and token")
-    public void setAuthenticationToken() {
+    public void setAuthentication() {
         RequestSpecification reqSpec = RequestSpecUtils.buildWithAuth();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication only with API key.
+     */
+    @Given("I set authentication using only an API key")
+    public void setAuthenticationAPIKey() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyApiKey();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication only with Token.
+     */
+    @Given("I set authentication using only a Token")
+    public void setAuthenticationToken() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyToken();
         context.setReqSpec(reqSpec);
     }
 
@@ -152,14 +170,14 @@ public class RequestSteps {
     }
 
     /**
-     * Sends PUT request with json body.
+     * Sends GET request with json body.
      *
      * @param endpoint resource endpoint.
      * @param body     request json body.
      */
     @When("I send a GET request to {string} with the following json body")
     public void sendGETRequestWithJsonBody(final String endpoint, final String body) {
-        response = requestManager.init(context).body(body).put(endpoint);
+        response = requestManager.init(context).body(body).get(endpoint);
         context.setResponse(response);
     }
 }
