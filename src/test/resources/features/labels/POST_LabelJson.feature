@@ -6,13 +6,17 @@ Feature: Label Controller
     And I have a board created
 
   @functional
-  Scenario Outline: Create a Label with query params
+  Scenario Outline: Create a Label
   Valid color options: yellow, purple, blue, red, green, orange, black, sky, pink, lime
 
-    When I send a POST request to "/labels" with the following parameters
-      | name    | <Name>     |
-      | color   | <Color>    |
-      | idBoard | {board.id} |
+    When I send a POST request to "/labels" with the following json body
+    """
+      {
+        "name" : "<Name>",
+        "color" : "<Color>",
+        "idBoard": "{board.id}"
+      }
+    """
     Then  I validate the response has status code 200
     And I validate the response body should match with "/labels/labelSchema.json" JSON schema
     And I validate the response contains the following data
@@ -34,11 +38,15 @@ Feature: Label Controller
       | feature | pink   |
 
   @smoke
-  Scenario: Created without the "color" field with query params
+  Scenario: Created without the "color" field
 
-    When I send a POST request to "/labels" with the following parameters
-      | name    | Test feature |
-      | idBoard | {board.id}   |
+    When I send a POST request to "/labels" with the following json body
+    """
+      {
+        "name" : "Test feature",
+        "idBoard": "{board.id}"
+      }
+    """
     Then  I validate the response has status code 200
     And I save response as "label"
     And I validate the response body should match with "/labels/labelSchema.json" JSON schema

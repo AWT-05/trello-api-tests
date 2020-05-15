@@ -28,7 +28,7 @@ Feature: Organization Controller
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
 
-  @deleteOrganization @skipScenario
+  @deleteOrganization
   Scenario: Create an Organization with unique parameter
     When I send a POST request to "/organizations" with the following parameters
       | displayName | New organization test          |
@@ -40,7 +40,7 @@ Feature: Organization Controller
       | displayName | New organization test          |
       | name        | new_organization_test_unique23 |
 
-  @deleteOrganization @skipScenario
+  @deleteOrganization
   Scenario: Create an Organization with all allowed parameters
     When I send a POST request to "/organizations" with the following parameters
       | displayName | New organization test                |

@@ -36,7 +36,7 @@ Feature: Organization Controller
       | desc        | Description of new organization test |
       | website     | http://fundacion-jala.org            |
 
-  @deleteOrganization @skipScenario
+  @deleteOrganization
   Scenario: Create an Organization using Json body with unique paramenter
     When I send a POST request to "/organizations" with the following json body
       """
@@ -52,7 +52,7 @@ Feature: Organization Controller
       | displayName | New organization test          |
       | name        | new_organization_test_unique23 |
 
-  @deleteOrganization @skipScenario
+  @deleteOrganization
   Scenario: Create an Organization using Json body with all allowed parameters
     When I send a POST request to "/organizations" with the following json body
       """
