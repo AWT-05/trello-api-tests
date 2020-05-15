@@ -132,7 +132,7 @@ public final class Environment {
     /**
      * Gets environment Thread Count.
      *
-     * @return environment API Token.
+     * @return environment Thread Count.
      */
     public String getThreadCount() {
         return getEnvProperty(THREAD_COUNT);
