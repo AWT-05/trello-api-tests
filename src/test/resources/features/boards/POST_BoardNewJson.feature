@@ -37,12 +37,30 @@ Feature: Board Controller
       | prefs.background | green                                              |
 
   @functional
-  Scenario Outline: Create a board with description parameter with special chars using a Json body
+  Scenario: Create a board with description parameter with special chars using a Json body
     When I send a POST request to "/boards" with the following json body
     """
       {
 	    "name" : "Hello Board (Json)!",
-	    "desc" : "<value>",
+	    "desc" : "5ebcf20b25ab832271a56fb%$",
+	    "prefs_background" : "green"
+      }
+     """
+    And I save the id value to clean "board" workspace
+    Then I validate the response has status code 200
+    And I validate the response body should match with "boards/boardSchema.json" JSON schema
+    And I validate the response contains the following data
+      | name             | Hello Board (Json)!       |
+      | desc             | 5ebcf20b25ab832271a56fb%$ |
+      | prefs.background | green                     |
+
+  @functional
+  Scenario: Create a board with empty description parameter with Json body
+    When I send a POST request to "/boards" with the following json body
+      """
+      {
+	    "name" : "Hello Board (Json)!",
+	    "desc" : "",
 	    "prefs_background" : "green"
       }
      """
@@ -51,15 +69,8 @@ Feature: Board Controller
     And I validate the response body should match with "boards/boardSchema.json" JSON schema
     And I validate the response contains the following data
       | name             | Hello Board (Json)! |
-      | desc             | <description>       |
+      | desc             | {empty}             |
       | prefs.background | green               |
-    Examples:
-      | value              | description        |
-      | $%&$%&$%&$%& 4$%&  | $%&$%&$%&$%& 4$%&  |
-      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
-      | 99999999999999999  | 99999999999999999  |
-      | abcdef12.0abcdeffF | abcdef12.0abcdeffF |
-      | {empty}            | {empty}            |
 
   @functional
   Scenario Outline: Create a board with different background colors using a Json body
@@ -100,7 +111,7 @@ Feature: Board Controller
     Then I validate the response has status code 400
 
   @negative
-  Scenario: Create a board with invalid required parameter using a Json body
+  Scenario: Create a board with empty required parameter using a Json body
     When I send a POST request to "/boards" with the following json body
       """
       {
@@ -123,8 +134,6 @@ Feature: Board Controller
     And I validate the response contains the following data
       | name | <name> |
     Examples:
-      | value              | name               |
-      | $%&$%&$%&$%& 4$%&  | $%&$%&$%&$%& 4$%&  |
-      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
-      | 99999999999999999  | 99999999999999999  |
-      | abcdef12.0abcdeffF | abcdef12.0abcdeffF |
+      | value                     | name                      |
+      | 5ebcf20b25ab832271a56fb%$ | 5ebcf20b25ab832271a56fb%$ |
+      | $$$$$$$$$$$$$$$$$$$$$$$$$ | $$$$$$$$$$$$$$$$$$$$$$$$$ |

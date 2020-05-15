@@ -29,25 +29,32 @@ Feature: Board Controller
       | prefs.background | green                                              |
 
   @functional
-  Scenario Outline: Create a board with description parameter with special chars
+  Scenario: Create a board with description parameter with special chars
+    When I send a POST request to "/boards" with the following parameters
+      | name             | Hello New Board!          |
+      | desc             | 5ebcf20b25ab832271a56fb%$ |
+      | prefs_background | green                     |
+    And I save the id value to clean "board" workspace
+    Then I validate the response has status code 200
+    And I validate the response body should match with "boards/boardSchema.json" JSON schema
+    And I validate the response contains the following data
+      | name             | Hello New Board!          |
+      | desc             | 5ebcf20b25ab832271a56fb%$ |
+      | prefs.background | green                     |
+
+  @functional
+  Scenario: Create a board with empty description parameter
     When I send a POST request to "/boards" with the following parameters
       | name             | Hello New Board! |
-      | desc             | <value>          |
+      | desc             | {empty}          |
       | prefs_background | green            |
     And I save the id value to clean "board" workspace
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/boardSchema.json" JSON schema
     And I validate the response contains the following data
       | name             | Hello New Board! |
-      | desc             | <description>    |
+      | desc             | {empty}          |
       | prefs.background | green            |
-    Examples:
-      | value              | description        |
-      | $%&$%&$%&$%& 4$%&  | $%&$%&$%&$%& 4$%&  |
-#      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
-#      | 99999999999999999  | 99999999999999999  |
-#      | abcdef12.0abcdeffF | abcde%%2.0abcdeffF |
-      | {empty}            | {empty}            |
 
   @functional
   Scenario Outline: Create a board with different background colors
@@ -80,7 +87,7 @@ Feature: Board Controller
     Then I validate the response has status code 400
 
   @negative
-  Scenario: Create a board with invalid required parameter
+  Scenario: Create a board with empty required parameter
     When I send a POST request to "/boards" with the following parameters
       | name | {empty} |
     Then I validate the response has status code 400
@@ -95,8 +102,6 @@ Feature: Board Controller
     And I validate the response contains the following data
       | name | <name> |
     Examples:
-      | value              | name               |
-      | $%&$%&$%&$%& 4$%&  | $%&$%&$%&$%& 4$%&  |
-      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
-      | 99999999999999999  | 99999999999999999  |
-      | abcdef12.0abcdeffF | abcdef12.0abcdeffF |
+      | value                     | name                      |
+      | 5ebcf20b25ab832271a56fb%$ | 5ebcf20b25ab832271a56fb%$ |
+      | $$$$$$$$$$$$$$$$$$$$$$$$$ | $$$$$$$$$$$$$$$$$$$$$$$$$ |
