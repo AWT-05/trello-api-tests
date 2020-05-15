@@ -82,7 +82,7 @@ Feature: Organization Controller
       | displayName | New organization test              |
       | name        | unique_organization_test_updated23 |
 
-  @deleteOrganization
+  @deleteOrganization @skipScenario
   Scenario: Update all allowed parameters in the Organization using name as path parameter
     When I send a PUT request to "/organizations/{organization.name}" with the following parameters
       | displayName | organization test updated            |
