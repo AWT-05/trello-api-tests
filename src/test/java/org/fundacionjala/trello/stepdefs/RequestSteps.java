@@ -64,7 +64,7 @@ public class RequestSteps {
      * Sends GET request with parameters.
      *
      * @param endpoint resource endpoint.
-     * @param params request parameters.
+     * @param params   request parameters.
      */
     @When("I send a GET request to {string} with the following parameters")
     public void sendGETRequestWithParameters(final String endpoint, final Map<String, String> params) {
@@ -147,6 +147,18 @@ public class RequestSteps {
      */
     @When("I send a PUT request to {string} with the following json body")
     public void sendPUTRequestWithJsonBody(final String endpoint, final String body) {
+        response = requestManager.init(context).body(body).put(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
+     * Sends PUT request with json body.
+     *
+     * @param endpoint resource endpoint.
+     * @param body     request json body.
+     */
+    @When("I send a GET request to {string} with the following json body")
+    public void sendGETRequestWithJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).put(endpoint);
         context.setResponse(response);
     }

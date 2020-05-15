@@ -43,6 +43,6 @@ public final class RequestSpecUtils {
      */
     public static RequestSpecification build() {
         String baseUri = Environment.getInstance().getBaseUri();
-        return new RequestSpecBuilder().setBaseUri(baseUri).build();
+        return new RequestSpecBuilder().setBaseUri(baseUri).setContentType(ContentType.JSON).build();
     }
 }
