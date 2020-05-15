@@ -2,6 +2,7 @@ package org.fundacionjala.trello.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.fundacionjala.trello.client.RequestManagerRestAssured;
 import org.fundacionjala.trello.context.Context;
 import org.fundacionjala.trello.utils.RequestSpecUtils;
 import org.testng.SkipException;
@@ -32,7 +33,7 @@ public class CommonHooks {
      */
     @Before(order = BUILD_REQ_SEC_ORDER_VALUE)
     public void buildDefaultReqSpec() {
-        //RequestManagerRestAssured.displayFiltersData(); // Only for help
+        RequestManagerRestAssured.displayFiltersData(); // Only for help
         context.setReqSpec(RequestSpecUtils.build());
     }
 
