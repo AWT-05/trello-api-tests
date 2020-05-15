@@ -1,10 +1,10 @@
-@deleteBoard
+@deleteBoard @Smoke
 Feature: Board Controller
 
   Background: Set authentication and create a board
     Given I set authentication using API key and token
     When I send a POST request to "/boards" with the following parameters
-      | name | new_test_trello_api_board |
+      | name | New basic board for CRUD |
     And I save response as "board"
     Then I validate the response has status code 200
 
@@ -15,7 +15,7 @@ Feature: Board Controller
 
   Scenario: Update board created
     When I send a PUT request to "/boards/{board.id}" with the following parameters
-      | name | Name Updated |
+      | name | Boards name has been updated |
     Then I validate the response has status code 200
     And I validate the response body should match with "boards/getBoardSchema.json" JSON schema
 

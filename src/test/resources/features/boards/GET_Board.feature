@@ -37,11 +37,11 @@ Feature: Board Controller
       | {empty} |
       |         |
 
-  @negative
+  @negative @skipScenario
   Scenario Outline: Try to get a board without an existing id
     When I send a GET request to "/boards/<value>"
     Then I validate the response has status code 404
     Examples:
       | value                    |
-      | abcdef1234567890abcdefff |
-      | abcdef1234567890abcdeffA |
+      | 5ebcf20b2a5ab832271a56fb |
+      | 5ebcf20b2a5ab832271a56fA |

@@ -15,12 +15,9 @@ Feature: Board Controller
     When I send a DELETE request to "/boards/<value>"
     Then I validate the response has status code 404
     Examples:
-      | value                    |
-      | {empty}                  |
-      | bbbbbbbbbbbbbbbbbbbbbbbb |
-      | 999999999999999999999999 |
-      | 5ebcf20b2a5ab832271a56fb |
-      | abcdef1234567890abcdeffF |
+      | value   |
+      | {empty} |
+      |         |
 
   @negative
   Scenario Outline: Delete a board with an invalid id
@@ -28,10 +25,8 @@ Feature: Board Controller
     Then I validate the response has status code 400
     Examples:
       | value                         |
-      | zzzzzzzzzzzzzzzzzzzzzzzz      |
-      | ZZZZZZZZZZZZZZZZZZZZZZZZ      |
+      | gggggggggggggggggggggggg      |
+      | GGGGGGGGGGGGGGGGGGGGGGGG      |
       | $$$$$$$$$$$$$$$$$$$$$$$$      |
-      | ####!!!!!..abcd.........      |
-      | 12345679asdfqwerWERSDFAA      |
       | aaaaaaaaaaaaaaaaaaa           |
       | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
