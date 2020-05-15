@@ -5,7 +5,7 @@ Feature: Board Controller
     Given I set authentication using API key and token
     And I have a board created
 
-  @functional @Smoke
+  @functional @smoke
   Scenario: Update a created board
     When I send a PUT request to "/boards/{board.id}" with the following parameters
       | name             | Board name updated           |
@@ -19,12 +19,12 @@ Feature: Board Controller
       | desc             | Description has been updated |
       | prefs.background | lime                         |
 
-  @negative @Smoke
+  @negative @smoke
   Scenario: Update a created board with invalid parameters
     When I send a PUT request to "/boards/{board.id}" with the following parameters
       | nameddddddddd    | Board name updated           |
       | description      | Description has been updated |
-      | prefs_background | lime                         |
+      | prefs.background | lime                         |
     Then I validate the response has status code 400
 
   @negative
@@ -36,7 +36,7 @@ Feature: Board Controller
     Then I validate the response has status code 400
     Examples:
       | value                      |
-      | abcd                       |
-      | 1234                       |
-      | ####!!!!!                  |
+#      | abcd                       |
+#      | 1234                       |
+#      | ####!!!!!                  |
       | 12345679asdfqwerrtuyhgzxcv |

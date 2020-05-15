@@ -14,7 +14,7 @@ Feature: Board Controller
     And I validate the response contains the following data
       | name | Hello New Board! |
 
-  @Smoke
+  @smoke
   Scenario: Create a board with optional parameters
     When I send a POST request to "/boards" with the following parameters
       | name             | Hello New Board!                                   |
@@ -44,9 +44,9 @@ Feature: Board Controller
     Examples:
       | value              | description        |
       | $%&$%&$%&$%& 4$%&  | $%&$%&$%&$%& 4$%&  |
-      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
-      | 99999999999999999  | 99999999999999999  |
-      | abcdef12.0abcdeffF | abcdef12.0abcdeffF |
+#      | bbbbbbbbbbbbbbbbbb | bbbbbbbbbbbbbbbbbb |
+#      | 99999999999999999  | 99999999999999999  |
+#      | abcdef12.0abcdeffF | abcde%%2.0abcdeffF |
       | {empty}            | {empty}            |
 
   @functional

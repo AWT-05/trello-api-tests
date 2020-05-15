@@ -5,7 +5,7 @@ Feature: Board Controller
     Given I set authentication using API key and token
     And I have a board created
 
-  @functional @Smoke
+  @functional @smoke
   Scenario: Get a created board
     When I send a GET request to "/boards/{board.id}"
     Then I validate the response has status code 200
@@ -22,13 +22,20 @@ Feature: Board Controller
     Then I validate the response has status code 400
     Examples:
       | value                         |
-      | zzzzzzzzzzzzzzzzzzzzzzzz      |
-      | ZZZZZZZZZZZZZZZZZZZZZZZZ      |
+      | gggggggggggggggggggggggg      |
+      | GGGGGGGGGGGGGGGGGGGGGGGG      |
       | $$$$$$$$$$$$$$$$$$$$$$$$      |
-      | ####!!!!!..abcd.........      |
-      | 12345679asdfqwerWERSDFAA      |
       | aaaaaaaaaaaaaaaaaaa           |
       | aaaaaaaaaaaaaaaaaaaaaaaaaaaaa |
+
+  @negative
+  Scenario Outline: Try to get a board with empty ids
+    When I send a GET request to "/boards/<value>"
+    Then I validate the response has status code 404
+    Examples:
+      | value   |
+      | {empty} |
+      |         |
 
   @negative
   Scenario Outline: Try to get a board without an existing id
@@ -36,8 +43,5 @@ Feature: Board Controller
     Then I validate the response has status code 404
     Examples:
       | value                    |
-      | {empty}                  |
-      | bbbbbbbbbbbbbbbbbbbbbbbb |
-      | 999999999999999999999999 |
-      | 5ebcf20b2a5ab832271a56fb |
-      | abcdef1234567890abcdeffa |
+      | abcdef1234567890abcdefff |
+      | abcdef1234567890abcdeffA |

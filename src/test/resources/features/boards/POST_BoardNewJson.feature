@@ -18,7 +18,7 @@ Feature: Board Controller
     And I validate the response contains the following data
       | name | Hello New Board! |
 
-  @Smoke
+  @smoke
   Scenario: Create a board with optional parameters using Json body
     When I send a POST request to "/boards" with the following json body
       """

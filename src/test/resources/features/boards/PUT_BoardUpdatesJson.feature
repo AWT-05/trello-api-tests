@@ -5,7 +5,7 @@ Feature: Board Controller
     Given I set authentication using API key and token
     And I have a board created
 
-  @functional @Smoke
+  @functional @smoke
   Scenario: Update a created board using a Json body
     When I send a PUT request to "/boards/{board.id}" with the following json body
       """
@@ -23,7 +23,7 @@ Feature: Board Controller
       | desc             | Description has been updated using a Json |
       | prefs.background | lime                                      |
 
-  @negative @Smoke
+  @negative @smoke
   Scenario: Update a created board with invalid parameters in a Json body
     When I send a PUT request to "/boards/{board.id}" with the following json body
       """
