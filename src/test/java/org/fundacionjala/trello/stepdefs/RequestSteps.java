@@ -35,8 +35,26 @@ public class RequestSteps {
      * Sets authentication header to base request specification.
      */
     @Given("I set authentication using API key and token")
-    public void setAuthenticationToken() {
+    public void setAuthentication() {
         RequestSpecification reqSpec = RequestSpecUtils.buildWithAuth();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication only with API key.
+     */
+    @Given("I set authentication using only an API key")
+    public void setAuthenticationAPIKey() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyApiKey();
+        context.setReqSpec(reqSpec);
+    }
+
+    /**
+     * Sets authentication only with Token.
+     */
+    @Given("I set authentication using only a Token")
+    public void setAuthenticationToken() {
+        RequestSpecification reqSpec = RequestSpecUtils.buildOnlyToken();
         context.setReqSpec(reqSpec);
     }
 
@@ -55,8 +73,20 @@ public class RequestSteps {
      * @param endpoint resource endpoint.
      */
     @When("I send a GET request to {string}")
-    public void sendGETRequestWithParameters(final String endpoint) {
+    public void sendGETRequest(final String endpoint) {
         response = requestManager.init(context).get(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
+     * Sends GET request with parameters.
+     *
+     * @param endpoint resource endpoint.
+     * @param params   request parameters.
+     */
+    @When("I send a GET request to {string} with the following parameters")
+    public void sendGETRequestWithParameters(final String endpoint, final Map<String, String> params) {
+        response = requestManager.init(context).queryParams(params).get(endpoint);
         context.setResponse(response);
     }
 
@@ -136,6 +166,18 @@ public class RequestSteps {
     @When("I send a PUT request to {string} with the following json body")
     public void sendPUTRequestWithJsonBody(final String endpoint, final String body) {
         response = requestManager.init(context).body(body).put(endpoint);
+        context.setResponse(response);
+    }
+
+    /**
+     * Sends GET request with json body.
+     *
+     * @param endpoint resource endpoint.
+     * @param body     request json body.
+     */
+    @When("I send a GET request to {string} with the following json body")
+    public void sendGETRequestWithJsonBody(final String endpoint, final String body) {
+        response = requestManager.init(context).body(body).get(endpoint);
         context.setResponse(response);
     }
 }
