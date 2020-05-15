@@ -43,5 +43,4 @@ Feature: Board Controller
     Then I validate the response has status code 404
     Examples:
       | value                    |
-      | 5ebcf20b2a5ab832271a56fb |
       | 5ebcf20b2a5ab832271a56fA |
