@@ -31,4 +31,4 @@ Feature: Label Controller
       | Name     | Color | IdBoard                  |
       | TestName | None4 | {board.id}               |
       | TestName | lime  | {empty}                  |
-      | TestName | lime  | 000000000000000000000000 |
+      | TestName | lime  | 00000000000000000000000z |

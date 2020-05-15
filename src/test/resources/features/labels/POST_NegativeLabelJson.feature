@@ -37,5 +37,5 @@ Feature: Label Controller
     Examples: required fields
       | Name     | Color | IdBoard                  |
       | TestName | None4 | {board.id}               |
-      | TestName | lima  | {empty}                  |
-      | TestName | lima  | 000000000000000000000000 |
+      | TestName | lime  | {empty}                  |
+      | TestName | lime  | 00000000000000000000000z |
