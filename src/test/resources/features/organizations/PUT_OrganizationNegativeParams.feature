@@ -14,13 +14,11 @@ Feature: Organization Controller
     And I validate the response contains the following data
       | displayName | <Updated Name parameter> |
     Examples:
-      | Updated Name parameter                     |
-      | evaluating lower case                      |
-      | EVALUATIN UPPERCASE                        |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Updated Name parameter                   |
+      | evaluating lower case                    |
+      | EVALUATIN UPPERCASE                      |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   @deleteOrganization
   Scenario Outline: Updated an Organization evaluating description parameter
@@ -33,13 +31,11 @@ Feature: Organization Controller
       | displayName | New organization test |
       | desc        | <Updated Description> |
     Examples:
-      | Updated Description                        |
-      | evaluating lower case                      |
-      | EVALUATIN UPPERCASE                        |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Updated Description                      |
+      | evaluating lower case                    |
+      | EVALUATING UPPERCASE                     |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   @deleteOrganization
   Scenario Outline: Update an Organization evaluating website parameter
@@ -52,28 +48,25 @@ Feature: Organization Controller
       | displayName | New organization test    |
       | website     | http://<Updated Website> |
     Examples:
-      | Updated Website                            |
-      | fundacion-jala.org  format                 |
-      | evaluating website format                  |
-      | EVALUATIN UPPERCASE format                 |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Updated Website                          |
+      | fundacion-jala.org  format               |
+      | evaluating website format                |
+      | EVALUATING UPPERCASE format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   @deleteOrganization
   Scenario Outline: Update an Organization evaluating unique parameter
     When I send a PUT request to "/organizations/{organization.id}" with the following parameters
-      | name        | <Organization name>   |
+      | name | <Organization name> |
     Then I validate the response has status code 400
     And I validate the response body should match with "organizations/orgErrorSchema.json" JSON schema
     And I validate the response contains the following data
       | message | Organization short name is invalid: only lowercase letters, underscores, and numbers are allowed |
       | error   | ERROR                                                                                            |
     Examples:
-      | Organization name                          |
-      | EVALUATIN UPPERCASE format                 |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Organization name                        |
+      | EVALUATIN UPPERCASE format               |
+      | evaluating lowercase format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |

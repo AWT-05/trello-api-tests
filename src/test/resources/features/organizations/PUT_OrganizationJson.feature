@@ -54,7 +54,7 @@ Feature: Organization Controller
       """
       {
 	    "displayName" : "organization test updated",
-	    "name" : "unique_organization_test_updated23",
+	    "name" : "updated23",
 	    "desc" : "Description of updated organization test",
 	    "website" : "fundacion-jala.org"
       }
@@ -63,7 +63,7 @@ Feature: Organization Controller
     And I validate the response body should match with "organizations/orgGetSchema.json" JSON schema
     And I validate the response contains the following data
       | displayName | organization test updated                |
-      | name        | unique_organization_test_updated23       |
+      | name        | updated23                                |
       | desc        | Description of updated organization test |
       | website     | http://fundacion-jala.org                |
 

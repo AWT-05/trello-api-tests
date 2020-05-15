@@ -18,13 +18,11 @@ Feature: Organization Controller
     And I validate the response contains the following data
       | displayName | <Display Name parameter> |
     Examples:
-      | Display Name parameter                 |
-      | evaluating lower case                  |
-      | EVALUATIN UPPERCASE                    |
-      | evaluating especial characters`!@#$%   |
-      | evaluating especial characters ()      |
-      | evaluating especial characters __--??? |
-      | evaluating CHARACTERS MIX 123!%@#&$**% |
+      | Display Name parameter                   |
+      | evaluating lower case                    |
+      | EVALUATING UPPERCASE format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   Scenario: Create an Organization using Json body with leading white spaces
     When I send a POST request to "/organizations" with the following json body
@@ -70,13 +68,11 @@ Feature: Organization Controller
       | displayName | New organization test |
       | desc        | <Description>         |
     Examples:
-      | Description                                |
-      | evaluating lower case                      |
-      | EVALUATIN UPPERCASE                        |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Description                              |
+      | evaluating lower case                    |
+      | EVALUATING UPPERCASE format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   @deleteOrganization
   Scenario Outline: Create an Organization with json body evaluating website parameter
@@ -94,14 +90,12 @@ Feature: Organization Controller
       | displayName | New organization test |
       | website     | http://<Website>      |
     Examples:
-      | Website                                    |
-      | fundacion-jala.org  format                 |
-      | evaluating website format                  |
-      | EVALUATIN UPPERCASE format                 |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Website                                  |
+      | fundacion-jala.org  format               |
+      | evaluating website format                |
+      | EVALUATING UPPERCASE format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
 
   @deleteOrganization
   Scenario Outline: Create an Organization with json body evaluating unique parameter
@@ -116,9 +110,8 @@ Feature: Organization Controller
     Then I validate the response has status code 200
     And I validate the response body should match with "organizations/orgSchema.json" JSON schema
     Examples:
-      | Organization name                          |
-      | EVALUATIN UPPERCASE format                 |
-      | evaluating especial characters ------????? |
-      | evaluating especial characters []{}{}()]   |
-      | evaluating especial characters @#$%^^&*(   |
-      | evaluating CHARACTERS MIX 123!%@#&$**%     |
+      | Organization name                        |
+      | evaluating lowercase format              |
+      | EVALUATING UPPERCASE format              |
+      | evaluating @#$%^^&*!%@#&$**%--?????      |
+      | evaluating especial characters []{}{}()] |
